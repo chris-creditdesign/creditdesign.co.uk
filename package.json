@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "creditdesign.co.uk",
+  "description": "Personal webiset for Chris Ryan",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
