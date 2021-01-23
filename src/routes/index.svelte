@@ -76,9 +76,10 @@
 
 				<p>
 					You can find me on
+					<a href="https://twitter.com/creditdesign">Twitter</a>,
 					<a href="https://github.com/chris-creditdesign">GitHub</a>
 					and
-					<a href="https://codepen.io/chris-creditdesign">CodePen</a>.
+					<a href="https://codepen.io/chris-creditdesign">Codepen</a>.
 				</p>
 			</Stack>
 
