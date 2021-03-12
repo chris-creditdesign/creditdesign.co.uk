@@ -14,8 +14,8 @@
       <h2>Hi, I'm Chris Ryan</h2>
 
       <p>
-        I am a Senior Art Editor
-        <a href="https://twitter.com/naturenews">@NatureNews</a>
+        I'm a Senior Art Editor at
+        <a href="https://www.nature.com/news"><i>Nature</i> news</a>
         in London.
       </p>
 
