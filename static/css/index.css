@@ -303,7 +303,7 @@ sub {
 
 /* Borders */
 .border-above {
-  padding-top: var(--s1);
+  padding-top: var(--s-2);
   border-top: 4px solid var(--text-color);
 }
 
