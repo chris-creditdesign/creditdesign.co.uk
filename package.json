@@ -23,6 +23,7 @@
     "nature-immersive-svelte-components": "^0.5.4",
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.4.0",
+    "sass": "^1.42.1",
     "svelte": "^3.42.6",
     "svelte-check": "^2.2.6",
     "svelte-preprocess": "^4.9.4",
