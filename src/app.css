@@ -1,0 +1,60 @@
+/* Write your global styles here, in PostCSS syntax */
+@import '../node_modules/nature-immersive-svelte-components/static/css/index.css';
+@import '../node_modules/nature-immersive-svelte-components/static/css/custom-props.css';
+@import '../node_modules/nature-immersive-svelte-components/static/css/font-size.css';
+@import '../node_modules/nature-immersive-svelte-components/static/css/light-theme.css';
+@import '../node_modules/nature-immersive-svelte-components/static/css/themes.css';
+@import '../node_modules/nature-immersive-svelte-components/static/css/buttons.css';
+@import '../node_modules/nature-immersive-svelte-components/static/css/utilities.css';
+
+
+@font-face {
+  font-family: "Atkinson";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Atkinson-Hyperlegible-Regular-102a.woff2") format("woff2"),
+    url("/fonts/Atkinson-Hyperlegible-Regular-102.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Atkinson";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/Atkinson-Hyperlegible-Bold-102a.woff2") format("woff2"),
+    url("/fonts/Atkinson-Hyperlegible-Bold-102.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Atkinson";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/Atkinson-Hyperlegible-Italic-102a.woff2") format("woff2"),
+    url("/fonts/Atkinson-Hyperlegible-Italic-102.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Atkinson";
+  font-style: italic;
+  font-weight: 700;
+  src: url("/fonts/Atkinson-Hyperlegible-BoldItalic-102a.woff2")
+      format("woff2"),
+    url("/fonts/Atkinson-Hyperlegible-BoldItalic-102.woff") format("woff");
+}
+
+:root {
+  --serif-font-family: palatino, times, "Times New Roman", serif;
+  --sans-serif-font: "Atkinson", arial, helvetica, sans-serif;
+}
+
+body {
+  font-family: var(--sans-serif-font);
+}
+
+/* -------------------------------- Modifiers ------------------------------- */
+
+/* Borders */
+.border-above {
+  padding-top: var(--s-2);
+  border-top: 4px solid var(--color--text);
+}
+
