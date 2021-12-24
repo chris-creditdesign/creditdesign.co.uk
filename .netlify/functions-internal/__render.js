@@ -6128,9 +6128,9 @@ function init(settings = default_settings) {
     amp: false,
     dev: false,
     entry: {
-      file: assets + "/_app/start-9b785900.js",
+      file: assets + "/_app/start-71ed8068.js",
       css: [assets + "/_app/assets/start-d5b4de3e.css", assets + "/_app/assets/vendor-61e1ccbd.css"],
-      js: [assets + "/_app/start-9b785900.js", assets + "/_app/chunks/vendor-b68e8990.js"]
+      js: [assets + "/_app/start-71ed8068.js", assets + "/_app/chunks/vendor-67e56bed.js"]
     },
     fetched: void 0,
     floc: false,
@@ -6189,7 +6189,7 @@ var module_lookup = {
     return index;
   })
 };
-var metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-2cbc454f.js", "css": ["assets/pages/__layout.svelte-f39e7e74.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/__layout.svelte-2cbc454f.js", "chunks/vendor-b68e8990.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-fa78fe38.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["error.svelte-fa78fe38.js", "chunks/vendor-b68e8990.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-5059c6e5.js", "css": ["assets/pages/index.svelte-4362e359.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/index.svelte-5059c6e5.js", "chunks/vendor-b68e8990.js"], "styles": [] } };
+var metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-5971fffb.js", "css": ["assets/pages/__layout.svelte-f39e7e74.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/__layout.svelte-5971fffb.js", "chunks/vendor-67e56bed.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-f6d64f2b.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["error.svelte-f6d64f2b.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-f9a2e9c1.js", "css": ["assets/pages/index.svelte-90ed27b2.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/index.svelte-f9a2e9c1.js", "chunks/vendor-67e56bed.js"], "styles": [] } };
 async function load_component(file) {
   const { entry, css: css2, js, styles } = metadata_lookup[file];
   return {
@@ -6207,7 +6207,7 @@ function render(request, {
   return respond({ ...request, host }, options, { prerender: prerender2 });
 }
 var _layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `<main>${slots.default ? slots.default({}) : ``}</main>`;
+  return `${slots.default ? slots.default({}) : ``}`;
 });
 var __layout = /* @__PURE__ */ Object.freeze({
   __proto__: null,
@@ -6827,32 +6827,46 @@ var PortfolioSection = create_ssr_component(($$result, $$props, $$bindings, slot
   let { articles: articles2 } = $$props;
   if ($$props.articles === void 0 && $$bindings.articles && articles2 !== void 0)
     $$bindings.articles(articles2);
-  return `${validate_component(Center, "Center").$$render($$result, { centerMeasure: "140ch" }, {}, {
-    default: () => `${validate_component(Stack, "Stack").$$render($$result, { stackSpace: "var(--s-1)" }, {}, {
-      default: () => `<h2 class="${"border-above"}">Portfolio</h2>
+  return `${validate_component(Stack, "Stack").$$render($$result, { stackSpace: "var(--s-1)" }, {}, {
+    default: () => `<h2 class="${"border-above"}">Portfolio</h2>
 
-		<p>These are some of my favourite projects from the last few years:</p>
+	<p>These are some of my favourite projects from the last few years:</p>
 
-		${validate_component(GridList, "GridList").$$render($$result, { gridSpace: "var(--s4)" }, {}, {
-        default: () => `${each(articles2, (cardData, i) => `${i === 0 || i === 3 ? `<li>${validate_component(CardSideImageBox, "CardSideImageBox").$$render($$result, {
-          headerLevel: "none",
-          headlineFontSize: "big-1",
-          cardData,
-          imageWidth: "20ch",
-          sidebarSpace: "var(--s1)"
-        }, {}, {})}
-					</li>` : `<li>${validate_component(CardSideImage, "CardSideImage").$$render($$result, {
-          headerLevel: "none",
-          headlineFontSize: "big-1",
-          cardData,
-          imageWidth: "20ch",
-          sidebarSpace: "var(--s1)",
-          imageOnLeft: false
-        }, {}, {})}
-					</li>`}`)}`
-      })}`
+	${validate_component(GridList, "GridList").$$render($$result, { gridSpace: "var(--s4)" }, {}, {
+      default: () => `${each(articles2, (cardData, i) => `${i === 0 || i === 3 ? `<li>${validate_component(CardSideImageBox, "CardSideImageBox").$$render($$result, {
+        headerLevel: "none",
+        headlineFontSize: "big-1",
+        cardData,
+        imageWidth: "20ch",
+        sidebarSpace: "var(--s1)"
+      }, {}, {})}
+				</li>` : `<li>${validate_component(CardSideImage, "CardSideImage").$$render($$result, {
+        headerLevel: "none",
+        headlineFontSize: "big-1",
+        cardData,
+        imageWidth: "20ch",
+        sidebarSpace: "var(--s1)",
+        imageOnLeft: false
+      }, {}, {})}
+				</li>`}`)}`
     })}`
   })}`;
+});
+var Footer = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  return `<div class="${"border-above"}">${validate_component(Stack, "Stack").$$render($$result, {}, {}, {
+    default: () => `<p>This website is built with <a href="${"https://kit.svelte.dev/"}">SvelteKit</a>, the typeface used
+			is
+			<a href="${"https://brailleinstitute.org/freefont"}">Atkinson Hyperlegible</a>.
+		</p>
+
+		<p>Credit Design is short for <strong>C</strong>hris
+			<strong>R</strong>yan <strong>Edit</strong>orial
+			<strong>Design</strong>, geddit?
+		</p>
+
+		<p>\xA9 Copyright 2021 Chris Ryan. No, sadly not \u2018that\u2019 <a href="${"https://en.wikipedia.org/wiki/Chris_Ryan"}">Chris Ryan</a>.
+		</p>`
+  })}</div>`;
 });
 var articles = [
   {
@@ -6904,8 +6918,8 @@ var portfolioArticles = {
   articles
 };
 var css = {
-  code: "body{margin-bottom:var(--s1)}",
-  map: `{"version":3,"file":"index.svelte","sources":["index.svelte"],"sourcesContent":["<script context=\\"module\\" lang=\\"ts\\">export const prerender = true;\\n<\/script>\\n\\n<script>\\n\\timport { Center, Stack } from 'creditdesign-svelte-components';\\n\\timport { CoverBackgroundVideo } from 'nature-immersive-svelte-components';\\n\\timport WebsiteIntro from '$lib/WebsiteIntro/index.svelte';\\n\\timport PortfolioSection from '$lib/PortfolioSection/index.svelte';\\n\\timport portfolioArticles from '../content/portfolio-articles.json';\\n\\tlet { articles } = portfolioArticles;\\n<\/script>\\n\\n<style>\\n\\t:global(body) {\\n\\t\\tmargin-bottom: var(--s1);\\n\\t}\\n</style>\\n\\n<svelte:head>\\n\\t<title>Chris Ryan</title>\\n</svelte:head>\\n\\n<Stack stackSpace=\\"var(--s3)\\">\\n\\t<CoverBackgroundVideo\\n\\t\\tsrcURL=\\"video/creditdesign-intro-small.jpg\\"\\n\\t\\talt=\\"This is the alt text\\"\\n\\t\\tcoverHeight=\\"40vh\\"\\n\\t>\\n\\t\\t<h1 class=\\"cover__centered\\">Credit Design</h1>\\n\\t</CoverBackgroundVideo>\\n\\n\\t<Stack stackSpace=\\"var(--s3)\\">\\n\\t\\t<Center>\\n\\t\\t\\t<WebsiteIntro />\\n\\t\\t</Center>\\n\\n\\t\\t<PortfolioSection {articles} />\\n\\n\\t\\t<Center>\\n\\t\\t\\t<div class=\\"border-above\\">\\n\\t\\t\\t\\t<Stack>\\n\\t\\t\\t\\t\\t<p>\\n\\t\\t\\t\\t\\t\\tThis website is built with <a href=\\"https://kit.svelte.dev/\\">SvelteKit</a>, the typeface\\n\\t\\t\\t\\t\\t\\tused is\\n\\t\\t\\t\\t\\t\\t<a href=\\"https://brailleinstitute.org/freefont\\">Atkinson Hyperlegible</a>.\\n\\t\\t\\t\\t\\t</p>\\n\\n\\t\\t\\t\\t\\t<p>\\n\\t\\t\\t\\t\\t\\tCredit Design is short for <strong>C</strong>hris\\n\\t\\t\\t\\t\\t\\t<strong>R</strong>yan <strong>Edit</strong>orial\\n\\t\\t\\t\\t\\t\\t<strong>Design</strong>, geddit?\\n\\t\\t\\t\\t\\t</p>\\n\\n\\t\\t\\t\\t\\t<p>\\n\\t\\t\\t\\t\\t\\t\xA9 Copyright 2021 Chris Ryan. No, sadly not \u2018that\u2019 <a\\n\\t\\t\\t\\t\\t\\t\\thref=\\"https://en.wikipedia.org/wiki/Chris_Ryan\\">Chris Ryan</a\\n\\t\\t\\t\\t\\t\\t>.\\n\\t\\t\\t\\t\\t</p>\\n\\t\\t\\t\\t</Stack>\\n\\t\\t\\t</div>\\n\\t\\t</Center>\\n\\t</Stack>\\n</Stack>\\n"],"names":[],"mappings":"AAaS,IAAI,AAAE,CAAC,AACd,aAAa,CAAE,IAAI,IAAI,CAAC,AACzB,CAAC"}`
+  code: "footer.svelte-1fmtkg1{margin-bottom:var(--s1)}",
+  map: `{"version":3,"file":"index.svelte","sources":["index.svelte"],"sourcesContent":["<script context=\\"module\\" lang=\\"ts\\">export const prerender = true;\\n<\/script>\\n\\n<script>\\n\\timport { Center, Stack } from 'creditdesign-svelte-components';\\n\\timport { CoverBackgroundVideo } from 'nature-immersive-svelte-components';\\n\\timport WebsiteIntro from '$lib/WebsiteIntro/index.svelte';\\n\\timport PortfolioSection from '$lib/PortfolioSection/index.svelte';\\n\\timport Footer from '$lib/Footer/index.svelte';\\n\\timport portfolioArticles from '../content/portfolio-articles.json';\\n\\tlet { articles } = portfolioArticles;\\n<\/script>\\n\\n<style>\\n\\tfooter {\\n\\t\\tmargin-bottom: var(--s1);\\n\\t}\\n</style>\\n\\n<svelte:head>\\n\\t<title>Chris Ryan</title>\\n</svelte:head>\\n\\n<Stack stackSpace=\\"var(--s3)\\">\\n\\t<header>\\n\\t\\t<CoverBackgroundVideo\\n\\t\\t\\tsrcURL=\\"video/creditdesign-intro-small.jpg\\"\\n\\t\\t\\talt=\\"This is the alt text\\"\\n\\t\\t\\tcoverHeight=\\"40vh\\"\\n\\t\\t>\\n\\t\\t\\t<h1 class=\\"cover__centered\\">Credit Design</h1>\\n\\t\\t</CoverBackgroundVideo>\\n\\t</header>\\n\\n\\t<main>\\n\\t\\t<Stack stackSpace=\\"var(--s3)\\">\\n\\t\\t\\t<Center>\\n\\t\\t\\t\\t<WebsiteIntro />\\n\\t\\t\\t</Center>\\n\\n\\t\\t\\t<Center centerMeasure=\\"140ch\\">\\n\\t\\t\\t\\t<PortfolioSection {articles} />\\n\\t\\t\\t</Center>\\n\\t\\t</Stack>\\n\\t</main>\\n\\n\\t<footer>\\n\\t\\t<Center><Footer /></Center>\\n\\t</footer>\\n</Stack>\\n"],"names":[],"mappings":"AAcC,MAAM,eAAC,CAAC,AACP,aAAa,CAAE,IAAI,IAAI,CAAC,AACzB,CAAC"}`
 };
 var prerender = true;
 var Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -6914,38 +6928,27 @@ var Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   return `${$$result.head += `${$$result.title = `<title>Chris Ryan</title>`, ""}`, ""}
 
 ${validate_component(Stack, "Stack").$$render($$result, { stackSpace: "var(--s3)" }, {}, {
-    default: () => `${validate_component(CoverBackgroundVideo, "CoverBackgroundVideo").$$render($$result, {
+    default: () => `<header>${validate_component(CoverBackgroundVideo, "CoverBackgroundVideo").$$render($$result, {
       srcURL: "video/creditdesign-intro-small.jpg",
       alt: "This is the alt text",
       coverHeight: "40vh"
     }, {}, {
       default: () => `<h1 class="${"cover__centered"}">Credit Design</h1>`
-    })}
+    })}</header>
 
-	${validate_component(Stack, "Stack").$$render($$result, { stackSpace: "var(--s3)" }, {}, {
+	<main>${validate_component(Stack, "Stack").$$render($$result, { stackSpace: "var(--s3)" }, {}, {
       default: () => `${validate_component(Center, "Center").$$render($$result, {}, {}, {
         default: () => `${validate_component(WebsiteIntro, "WebsiteIntro").$$render($$result, {}, {}, {})}`
       })}
 
-		${validate_component(PortfolioSection, "PortfolioSection").$$render($$result, { articles: articles2 }, {}, {})}
-
-		${validate_component(Center, "Center").$$render($$result, {}, {}, {
-        default: () => `<div class="${"border-above"}">${validate_component(Stack, "Stack").$$render($$result, {}, {}, {
-          default: () => `<p>This website is built with <a href="${"https://kit.svelte.dev/"}">SvelteKit</a>, the typeface
-						used is
-						<a href="${"https://brailleinstitute.org/freefont"}">Atkinson Hyperlegible</a>.
-					</p>
-
-					<p>Credit Design is short for <strong>C</strong>hris
-						<strong>R</strong>yan <strong>Edit</strong>orial
-						<strong>Design</strong>, geddit?
-					</p>
-
-					<p>\xA9 Copyright 2021 Chris Ryan. No, sadly not \u2018that\u2019 <a href="${"https://en.wikipedia.org/wiki/Chris_Ryan"}">Chris Ryan</a>.
-					</p>`
-        })}</div>`
+			${validate_component(Center, "Center").$$render($$result, { centerMeasure: "140ch" }, {}, {
+        default: () => `${validate_component(PortfolioSection, "PortfolioSection").$$render($$result, { articles: articles2 }, {}, {})}`
       })}`
-    })}`
+    })}</main>
+
+	<footer class="${"svelte-1fmtkg1"}">${validate_component(Center, "Center").$$render($$result, {}, {}, {
+      default: () => `${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}`
+    })}</footer>`
   })}`;
 });
 var index = /* @__PURE__ */ Object.freeze({
