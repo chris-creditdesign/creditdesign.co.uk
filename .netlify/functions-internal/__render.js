@@ -6128,9 +6128,9 @@ function init(settings = default_settings) {
     amp: false,
     dev: false,
     entry: {
-      file: assets + "/_app/start-71ed8068.js",
+      file: assets + "/_app/start-9dd4a2ce.js",
       css: [assets + "/_app/assets/start-d5b4de3e.css", assets + "/_app/assets/vendor-61e1ccbd.css"],
-      js: [assets + "/_app/start-71ed8068.js", assets + "/_app/chunks/vendor-67e56bed.js"]
+      js: [assets + "/_app/start-9dd4a2ce.js", assets + "/_app/chunks/vendor-67e56bed.js"]
     },
     fetched: void 0,
     floc: false,
@@ -6159,7 +6159,7 @@ function init(settings = default_settings) {
 }
 var empty = () => ({});
 var manifest = {
-  assets: [{ "file": ".DS_Store", "size": 12292, "type": null }, { "file": "android-chrome-192x192.png", "size": 4345, "type": "image/png" }, { "file": "android-chrome-512x512.png", "size": 12619, "type": "image/png" }, { "file": "apple-touch-icon.png", "size": 2693, "type": "image/png" }, { "file": "browserconfig.xml", "size": 246, "type": "application/xml" }, { "file": "favicon-16x16.png", "size": 641, "type": "image/png" }, { "file": "favicon-32x32.png", "size": 943, "type": "image/png" }, { "file": "favicon.ico", "size": 15086, "type": "image/vnd.microsoft.icon" }, { "file": "favicon.svg", "size": 617, "type": "image/svg+xml" }, { "file": "fonts/Atkinson-Hyperlegible-Bold-102.woff", "size": 23780, "type": "font/woff" }, { "file": "fonts/Atkinson-Hyperlegible-Bold-102a.woff2", "size": 16484, "type": "font/woff2" }, { "file": "fonts/Atkinson-Hyperlegible-BoldItalic-102.woff", "size": 25224, "type": "font/woff" }, { "file": "fonts/Atkinson-Hyperlegible-BoldItalic-102a.woff2", "size": 18068, "type": "font/woff2" }, { "file": "fonts/Atkinson-Hyperlegible-Italic-102.woff", "size": 24584, "type": "font/woff" }, { "file": "fonts/Atkinson-Hyperlegible-Italic-102a.woff2", "size": 17712, "type": "font/woff2" }, { "file": "fonts/Atkinson-Hyperlegible-Regular-102.woff", "size": 22792, "type": "font/woff" }, { "file": "fonts/Atkinson-Hyperlegible-Regular-102a.woff2", "size": 15884, "type": "font/woff2" }, { "file": "img/.DS_Store", "size": 6148, "type": null }, { "file": "img/chris-ryan-guardian.jpg", "size": 217464, "type": "image/jpeg" }, { "file": "img/portfolio/.DS_Store", "size": 6148, "type": null }, { "file": "img/portfolio/genomic-sequencing-small.jpg", "size": 6773, "type": "image/jpeg" }, { "file": "img/portfolio/genomic-sequencing.jpg", "size": 269385, "type": "image/jpeg" }, { "file": "img/portfolio/indirect-costs-small.jpg", "size": 10513, "type": "image/jpeg" }, { "file": "img/portfolio/indirect-costs.jpg", "size": 95244, "type": "image/jpeg" }, { "file": "img/portfolio/malaria-small.jpg", "size": 6862, "type": "image/jpeg" }, { "file": "img/portfolio/malaria.jpg", "size": 77954, "type": "image/jpeg" }, { "file": "img/portfolio/refugees-small.jpg", "size": 5836, "type": "image/jpeg" }, { "file": "img/portfolio/refugees.jpg", "size": 68068, "type": "image/jpeg" }, { "file": "manifest.json", "size": 410, "type": "application/json" }, { "file": "mstile-144x144.png", "size": 3177, "type": "image/png" }, { "file": "mstile-150x150.png", "size": 3183, "type": "image/png" }, { "file": "mstile-310x150.png", "size": 3436, "type": "image/png" }, { "file": "mstile-310x310.png", "size": 7052, "type": "image/png" }, { "file": "mstile-70x70.png", "size": 2157, "type": "image/png" }, { "file": "safari-pinned-tab.svg", "size": 1831, "type": "image/svg+xml" }, { "file": "video/.DS_Store", "size": 6148, "type": null }, { "file": "video/creditdesign-intro-small.jpg", "size": 24190, "type": "image/jpeg" }, { "file": "video/creditdesign-intro.jpg", "size": 131530, "type": "image/jpeg" }, { "file": "video/creditdesign-intro.mp4", "size": 2023203, "type": "video/mp4" }, { "file": "video/creditdesign-intro.webm", "size": 4555621, "type": "video/webm" }],
+  assets: [{ "file": ".DS_Store", "size": 12292, "type": null }, { "file": "android-chrome-192x192.png", "size": 4345, "type": "image/png" }, { "file": "android-chrome-512x512.png", "size": 12619, "type": "image/png" }, { "file": "apple-touch-icon.png", "size": 2693, "type": "image/png" }, { "file": "browserconfig.xml", "size": 246, "type": "application/xml" }, { "file": "favicon-16x16.png", "size": 641, "type": "image/png" }, { "file": "favicon-32x32.png", "size": 943, "type": "image/png" }, { "file": "favicon.ico", "size": 15086, "type": "image/vnd.microsoft.icon" }, { "file": "favicon.svg", "size": 617, "type": "image/svg+xml" }, { "file": "fonts/Atkinson-Hyperlegible-Bold-102.woff", "size": 23780, "type": "font/woff" }, { "file": "fonts/Atkinson-Hyperlegible-Bold-102a.woff2", "size": 16484, "type": "font/woff2" }, { "file": "fonts/Atkinson-Hyperlegible-BoldItalic-102.woff", "size": 25224, "type": "font/woff" }, { "file": "fonts/Atkinson-Hyperlegible-BoldItalic-102a.woff2", "size": 18068, "type": "font/woff2" }, { "file": "fonts/Atkinson-Hyperlegible-Italic-102.woff", "size": 24584, "type": "font/woff" }, { "file": "fonts/Atkinson-Hyperlegible-Italic-102a.woff2", "size": 17712, "type": "font/woff2" }, { "file": "fonts/Atkinson-Hyperlegible-Regular-102.woff", "size": 22792, "type": "font/woff" }, { "file": "fonts/Atkinson-Hyperlegible-Regular-102a.woff2", "size": 15884, "type": "font/woff2" }, { "file": "img/.DS_Store", "size": 6148, "type": null }, { "file": "img/chris-ryan-guardian.jpg", "size": 217464, "type": "image/jpeg" }, { "file": "img/portfolio/.DS_Store", "size": 6148, "type": null }, { "file": "img/portfolio/diabetes-small.jpg", "size": 12765, "type": "image/jpeg" }, { "file": "img/portfolio/diabetes.jpg", "size": 31617, "type": "image/jpeg" }, { "file": "img/portfolio/genomic-sequencing-small.jpg", "size": 6773, "type": "image/jpeg" }, { "file": "img/portfolio/genomic-sequencing.jpg", "size": 269385, "type": "image/jpeg" }, { "file": "img/portfolio/indirect-costs-small.jpg", "size": 10513, "type": "image/jpeg" }, { "file": "img/portfolio/indirect-costs.jpg", "size": 95244, "type": "image/jpeg" }, { "file": "img/portfolio/malaria-small.jpg", "size": 6862, "type": "image/jpeg" }, { "file": "img/portfolio/malaria.jpg", "size": 77954, "type": "image/jpeg" }, { "file": "img/portfolio/refugees-small.jpg", "size": 5836, "type": "image/jpeg" }, { "file": "img/portfolio/refugees.jpg", "size": 68068, "type": "image/jpeg" }, { "file": "manifest.json", "size": 410, "type": "application/json" }, { "file": "mstile-144x144.png", "size": 3177, "type": "image/png" }, { "file": "mstile-150x150.png", "size": 3183, "type": "image/png" }, { "file": "mstile-310x150.png", "size": 3436, "type": "image/png" }, { "file": "mstile-310x310.png", "size": 7052, "type": "image/png" }, { "file": "mstile-70x70.png", "size": 2157, "type": "image/png" }, { "file": "safari-pinned-tab.svg", "size": 1831, "type": "image/svg+xml" }, { "file": "video/.DS_Store", "size": 6148, "type": null }, { "file": "video/creditdesign-intro-small.jpg", "size": 24190, "type": "image/jpeg" }, { "file": "video/creditdesign-intro.jpg", "size": 131530, "type": "image/jpeg" }, { "file": "video/creditdesign-intro.mp4", "size": 2023203, "type": "video/mp4" }, { "file": "video/creditdesign-intro.webm", "size": 4555621, "type": "video/webm" }],
   layout: "src/routes/__layout.svelte",
   error: ".svelte-kit/build/components/error.svelte",
   routes: [
@@ -6189,7 +6189,7 @@ var module_lookup = {
     return index;
   })
 };
-var metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-5971fffb.js", "css": ["assets/pages/__layout.svelte-f39e7e74.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/__layout.svelte-5971fffb.js", "chunks/vendor-67e56bed.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-f6d64f2b.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["error.svelte-f6d64f2b.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-f9a2e9c1.js", "css": ["assets/pages/index.svelte-90ed27b2.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/index.svelte-f9a2e9c1.js", "chunks/vendor-67e56bed.js"], "styles": [] } };
+var metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-5971fffb.js", "css": ["assets/pages/__layout.svelte-f39e7e74.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/__layout.svelte-5971fffb.js", "chunks/vendor-67e56bed.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-f6d64f2b.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["error.svelte-f6d64f2b.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-f6d115be.js", "css": ["assets/pages/index.svelte-90ed27b2.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/index.svelte-f6d115be.js", "chunks/vendor-67e56bed.js"], "styles": [] } };
 async function load_component(file) {
   const { entry, css: css2, js, styles } = metadata_lookup[file];
   return {
@@ -6873,12 +6873,12 @@ var articles = [
     eyebrow: "Immersive article",
     altText: "",
     caption: "",
-    srcURL: "img/portfolio/genomic-sequencing-small.jpg",
-    headline: "Milestones in genomic sequencing",
-    href: "https://www.nature.com/immersive/d42859-020-00099-0/index.html",
-    footnote: "Produced by <i>Nature</i>, <i>Nature Genetics</i> and <i>Nature Reviews Genetics</i>.",
+    srcURL: "img/portfolio/diabetes-small.jpg",
+    headline: "Milestones in diabetes",
+    href: "https://www.nature.com/immersive/d42859-021-00002-5/index.html",
+    footnote: "Produced by <i>Nature Portfolio</i>.",
     subHead: "2021",
-    text: "Timeline and circos diagram built with <strong>Svelte</strong> and <strong>D3</strong>. For performance the background animation is rendered using <strong>PixiJS</strong>."
+    text: "Timeline and 3D animation built with <strong>Svelte</strong>, <strong>Three.js</strong> and <strong>GSAP</strong>. Featuring an insulin molecule downloaded from <em>Protein Data Bank</em> and processed with <strong>Blender</strong>."
   },
   {
     eyebrow: "Immersive article",
@@ -6903,15 +6903,15 @@ var articles = [
     text: "Built with a customised version of the <strong>d3-sankey</strong> plugin to allow countries to be sorted by continent or by volume of people. The code for this graphic is available on <a href='https://github.com/chris-creditdesign/nature-refugees-sankey-2017'>GitHub</a>."
   },
   {
-    eyebrow: "Interactive graphic",
+    eyebrow: "Immersive article",
     altText: "",
     caption: "",
-    srcURL: "img/portfolio/indirect-costs-small.jpg",
-    headline: "Indirect costs",
-    href: "https://www.nature.com/news/indirect-costs-keeping-the-lights-on-1.16376#/interactive",
-    footnote: "Written by Heidi Ledford and edited by Brendan Maher.",
-    subHead: "2014",
-    text: "Brushable Scatterplot built with <strong>D3</strong>. Original data analysis performed with <strong>python</strong> and <strong>csvKit</strong>, hosted on <a href='https://github.com/chris-creditdesign/nature-indirect-costs'>GitHub</a> and cited within the article."
+    srcURL: "img/portfolio/genomic-sequencing-small.jpg",
+    headline: "Milestones in genomic sequencing",
+    href: "https://www.nature.com/immersive/d42859-020-00099-0/index.html",
+    footnote: "Produced by <i>Nature</i>, <i>Nature Genetics</i> and <i>Nature Reviews Genetics</i>.",
+    subHead: "2021",
+    text: "Timeline and circos diagram built with <strong>Svelte</strong> and <strong>D3</strong>. For performance the background animation is rendered using <strong>PixiJS</strong>."
   }
 ];
 var portfolioArticles = {
