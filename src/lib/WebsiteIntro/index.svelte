@@ -2,6 +2,13 @@
 	import { Stack, Sidebar } from 'creditdesign-svelte-components';
 </script>
 
+<style>
+	img {
+		border-radius: 50%;
+		max-width: 160px;
+	}
+</style>
+
 <Sidebar sidebarSpace="var(--s1)" sidebarContentMinWidth="60%">
 	<div slot="sidebar">
 		<img
@@ -37,10 +44,3 @@
 		</Stack>
 	</div>
 </Sidebar>
-
-<style>
-	img {
-		border-radius: 50%;
-		max-width: 160px;
-	}
-</style>

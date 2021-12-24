@@ -1,4 +1,7 @@
 {
+	"svelteSortOrder": "scripts-styles-markup",
+	"svelteAllowShorthand": true,
+	"svelteIndentScriptAndStyle": true,
 	"useTabs": true,
 	"singleQuote": true,
 	"trailingComma": "none",

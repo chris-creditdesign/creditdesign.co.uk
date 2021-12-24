@@ -71,6 +71,12 @@
 	};
 </script>
 
+<style>
+	:global(body) {
+		margin-bottom: var(--s1);
+	}
+</style>
+
 <svelte:head>
 	<title>Chris Ryan</title>
 </svelte:head>
@@ -120,9 +126,3 @@
 		</Stack>
 	</Center>
 </Stack>
-
-<style>
-	:global(body) {
-		margin-bottom: var(--s1);
-	}
-</style>
