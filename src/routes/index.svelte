@@ -1,15 +1,24 @@
 <script context="module" lang="ts">
 	export const prerender = true;
+
+	export async function load({ fetch }) {
+		const res = await fetch(`/projects.json`);
+		const { projects } = await res.json();
+
+		return {
+			props: { projects }
+		};
+	}
 </script>
 
 <script>
 	import { Center, Stack } from 'creditdesign-svelte-components';
 	import { CoverBackgroundVideo } from 'nature-immersive-svelte-components';
 	import WebsiteIntro from '$lib/WebsiteIntro/index.svelte';
-	import PortfolioSection from '$lib/PortfolioSection/index.svelte';
+	import ProjectsSection from '$lib/ProjectsSection/index.svelte';
 	import Footer from '$lib/Footer/index.svelte';
-	import portfolioArticles from '../content/portfolio-articles.json';
-	let { articles } = portfolioArticles;
+
+	export let projects;
 </script>
 
 <style>
@@ -26,7 +35,7 @@
 	<header>
 		<CoverBackgroundVideo
 			srcURL="video/creditdesign-intro-small.jpg"
-			alt="This is the alt text"
+			alt="Video montage showing clips of interactive graphics built by Chris Ryan."
 			coverHeight="40vh"
 		>
 			<h1 class="cover__centered">Credit Design</h1>
@@ -40,7 +49,7 @@
 			</Center>
 
 			<Center centerMeasure="140ch">
-				<PortfolioSection {articles} />
+				<ProjectsSection projects={[projects[0], projects[2], projects[3], projects[1]]} />
 			</Center>
 		</Stack>
 	</main>

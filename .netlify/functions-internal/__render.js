@@ -5405,7 +5405,7 @@ async function load_node({
         if (response) {
           const proxy = new Proxy(response, {
             get(response2, key, receiver) {
-              async function text() {
+              async function text2() {
                 const body = await response2.text();
                 const headers = {};
                 for (const [key2, value] of response2.headers) {
@@ -5425,11 +5425,11 @@ async function load_node({
                 return body;
               }
               if (key === "text") {
-                return text;
+                return text2;
               }
               if (key === "json") {
                 return async () => {
-                  return JSON.parse(await text());
+                  return JSON.parse(await text2());
                 };
               }
               return Reflect.get(response2, key, response2);
@@ -5800,34 +5800,34 @@ function parse_body(raw, headers) {
     return raw;
   const content_type = headers["content-type"];
   const [type, ...directives] = content_type ? content_type.split(/;\s*/) : [];
-  const text = () => new TextDecoder(headers["content-encoding"] || "utf-8").decode(raw);
+  const text2 = () => new TextDecoder(headers["content-encoding"] || "utf-8").decode(raw);
   switch (type) {
     case "text/plain":
-      return text();
+      return text2();
     case "application/json":
-      return JSON.parse(text());
+      return JSON.parse(text2());
     case "application/x-www-form-urlencoded":
-      return get_urlencoded(text());
+      return get_urlencoded(text2());
     case "multipart/form-data": {
       const boundary = directives.find((directive) => directive.startsWith("boundary="));
       if (!boundary)
         throw new Error("Missing boundary");
-      return get_multipart(text(), boundary.slice("boundary=".length));
+      return get_multipart(text2(), boundary.slice("boundary=".length));
     }
     default:
       return raw;
   }
 }
-function get_urlencoded(text) {
+function get_urlencoded(text2) {
   const { data, append } = read_only_form_data();
-  text.replace(/\+/g, " ").split("&").forEach((str) => {
+  text2.replace(/\+/g, " ").split("&").forEach((str) => {
     const [key, value] = str.split("=");
     append(decodeURIComponent(key), decodeURIComponent(value));
   });
   return data;
 }
-function get_multipart(text, boundary) {
-  const parts = text.split(`--${boundary}`);
+function get_multipart(text2, boundary) {
+  const parts = text2.split(`--${boundary}`);
   if (parts[0] !== "" || parts[parts.length - 1].trim() !== "--") {
     throw new Error("Malformed form data");
   }
@@ -6128,9 +6128,9 @@ function init(settings = default_settings) {
     amp: false,
     dev: false,
     entry: {
-      file: assets + "/_app/start-9dd4a2ce.js",
+      file: assets + "/_app/start-dd1d7661.js",
       css: [assets + "/_app/assets/start-d5b4de3e.css", assets + "/_app/assets/vendor-61e1ccbd.css"],
-      js: [assets + "/_app/start-9dd4a2ce.js", assets + "/_app/chunks/vendor-67e56bed.js"]
+      js: [assets + "/_app/start-dd1d7661.js", assets + "/_app/chunks/vendor-67e56bed.js"]
     },
     fetched: void 0,
     floc: false,
@@ -6169,6 +6169,42 @@ var manifest = {
       params: empty,
       a: ["src/routes/__layout.svelte", "src/routes/index.svelte"],
       b: [".svelte-kit/build/components/error.svelte"]
+    },
+    {
+      type: "endpoint",
+      pattern: /^\/projects\.json$/,
+      params: empty,
+      load: () => Promise.resolve().then(function() {
+        return index_json;
+      })
+    },
+    {
+      type: "page",
+      pattern: /^\/projects\/what-the-numbers-say-about-refugees\/?$/,
+      params: empty,
+      a: ["src/routes/__layout.svelte", "src/routes/projects/what-the-numbers-say-about-refugees.md"],
+      b: [".svelte-kit/build/components/error.svelte"]
+    },
+    {
+      type: "page",
+      pattern: /^\/projects\/milestones-in-genomic-sequencing\/?$/,
+      params: empty,
+      a: ["src/routes/__layout.svelte", "src/routes/projects/milestones-in-genomic-sequencing.md"],
+      b: [".svelte-kit/build/components/error.svelte"]
+    },
+    {
+      type: "page",
+      pattern: /^\/projects\/malarias-ticking-time-bomb\/?$/,
+      params: empty,
+      a: ["src/routes/__layout.svelte", "src/routes/projects/malarias-ticking-time-bomb.md"],
+      b: [".svelte-kit/build/components/error.svelte"]
+    },
+    {
+      type: "page",
+      pattern: /^\/projects\/milestones-in-diabetes\/?$/,
+      params: empty,
+      a: ["src/routes/__layout.svelte", "src/routes/projects/milestones-in-diabetes.md"],
+      b: [".svelte-kit/build/components/error.svelte"]
     }
   ]
 };
@@ -6187,9 +6223,21 @@ var module_lookup = {
   }),
   "src/routes/index.svelte": () => Promise.resolve().then(function() {
     return index;
+  }),
+  "src/routes/projects/what-the-numbers-say-about-refugees.md": () => Promise.resolve().then(function() {
+    return whatTheNumbersSayAboutRefugees;
+  }),
+  "src/routes/projects/milestones-in-genomic-sequencing.md": () => Promise.resolve().then(function() {
+    return milestonesInGenomicSequencing;
+  }),
+  "src/routes/projects/malarias-ticking-time-bomb.md": () => Promise.resolve().then(function() {
+    return malariasTickingTimeBomb;
+  }),
+  "src/routes/projects/milestones-in-diabetes.md": () => Promise.resolve().then(function() {
+    return milestonesInDiabetes;
   })
 };
-var metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-5971fffb.js", "css": ["assets/pages/__layout.svelte-f39e7e74.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/__layout.svelte-5971fffb.js", "chunks/vendor-67e56bed.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-f6d64f2b.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["error.svelte-f6d64f2b.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-f6d115be.js", "css": ["assets/pages/index.svelte-90ed27b2.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/index.svelte-f6d115be.js", "chunks/vendor-67e56bed.js"], "styles": [] } };
+var metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-5971fffb.js", "css": ["assets/pages/__layout.svelte-cf524309.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/__layout.svelte-5971fffb.js", "chunks/vendor-67e56bed.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-f6d64f2b.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["error.svelte-f6d64f2b.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-89048bb1.js", "css": ["assets/pages/index.svelte-90ed27b2.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/index.svelte-89048bb1.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/projects/what-the-numbers-say-about-refugees.md": { "entry": "pages/projects/what-the-numbers-say-about-refugees.md-28cb70f5.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["pages/projects/what-the-numbers-say-about-refugees.md-28cb70f5.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/projects/milestones-in-genomic-sequencing.md": { "entry": "pages/projects/milestones-in-genomic-sequencing.md-41e59e99.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["pages/projects/milestones-in-genomic-sequencing.md-41e59e99.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/projects/malarias-ticking-time-bomb.md": { "entry": "pages/projects/malarias-ticking-time-bomb.md-8760ba50.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["pages/projects/malarias-ticking-time-bomb.md-8760ba50.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/projects/milestones-in-diabetes.md": { "entry": "pages/projects/milestones-in-diabetes.md-a1c6b7e8.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["pages/projects/milestones-in-diabetes.md-a1c6b7e8.js", "chunks/vendor-67e56bed.js"], "styles": [] } };
 async function load_component(file) {
   const { entry, css: css2, js, styles } = metadata_lookup[file];
   return {
@@ -6206,6 +6254,37 @@ function render(request, {
   const host = request.headers["host"];
   return respond({ ...request, host }, options, { prerender: prerender2 });
 }
+var get = async () => {
+  let markdown_pages_glob = { "./malarias-ticking-time-bomb.md": () => Promise.resolve().then(function() {
+    return malariasTickingTimeBomb;
+  }), "./milestones-in-diabetes.md": () => Promise.resolve().then(function() {
+    return milestonesInDiabetes;
+  }), "./milestones-in-genomic-sequencing.md": () => Promise.resolve().then(function() {
+    return milestonesInGenomicSequencing;
+  }), "./what-the-numbers-say-about-refugees.md": () => Promise.resolve().then(function() {
+    return whatTheNumbersSayAboutRefugees;
+  }) };
+  let markdwon_pages_entries = Object.entries(markdown_pages_glob);
+  let projects = await Promise.all(markdwon_pages_entries.map(async ([path, page]) => {
+    const { metadata: metadata2 } = await page();
+    const slug = path.split("/").pop().split(".").shift();
+    return { ...metadata2, slug };
+  }));
+  projects.sort((a, b) => {
+    let dateA = parseInt(a.subHead);
+    let dateB = parseInt(b.subHead);
+    return dateB - dateA;
+  });
+  return {
+    status: 200,
+    body: { projects }
+  };
+};
+var index_json = /* @__PURE__ */ Object.freeze({
+  __proto__: null,
+  [Symbol.toStringTag]: "Module",
+  get
+});
 var _layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   return `${slots.default ? slots.default({}) : ``}`;
 });
@@ -6214,7 +6293,7 @@ var __layout = /* @__PURE__ */ Object.freeze({
   [Symbol.toStringTag]: "Module",
   "default": _layout
 });
-function load({ error: error2, status }) {
+function load$1({ error: error2, status }) {
   return { props: { error: error2, status } };
 }
 var Error$1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -6237,7 +6316,7 @@ var error = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   "default": Error$1,
-  load
+  load: load$1
 });
 var css$b = {
   code: ":root{--box-space--global:var(--s-1)}.box.svelte-prh7n6{--box-space--component:initial;--box-space:var(--box-space--component, var(--box-space--global, 1rem));padding:1rem;padding:var(--box-space)}",
@@ -6376,9 +6455,9 @@ var CardHeadline = create_ssr_component(($$result, $$props, $$bindings, slots) =
   let { headerLevel = "h2" } = $$props;
   let { headlineFontSize = "big-2" } = $$props;
   let { id = "" } = $$props;
-  let { href } = cardData;
-  let useId = id.length && href !== void 0 ? id : null;
-  let tabindex = id.length && href !== void 0 ? "-1" : null;
+  let { href: href2 } = cardData;
+  let useId = id.length && href2 !== void 0 ? id : null;
+  let tabindex = id.length && href2 !== void 0 ? "-1" : null;
   let className = `font-size:${headlineFontSize} font-weight:bold`;
   if ($$props.cardData === void 0 && $$bindings.cardData && cardData !== void 0)
     $$bindings.cardData(cardData);
@@ -6400,7 +6479,7 @@ var CardHeader = create_ssr_component(($$result, $$props, $$bindings, slots) => 
   let { headerLevel = "h2" } = $$props;
   let { headlineFontSize = "big-2" } = $$props;
   let { id = "" } = $$props;
-  let { eyebrow, subHead, headline, href } = cardData;
+  let { eyebrow: eyebrow2, subHead: subHead2, headline: headline2, href: href2 } = cardData;
   if ($$props.cardData === void 0 && $$bindings.cardData && cardData !== void 0)
     $$bindings.cardData(cardData);
   if ($$props.cardHeaderStackSpace === void 0 && $$bindings.cardHeaderStackSpace && cardHeaderStackSpace !== void 0)
@@ -6413,7 +6492,7 @@ var CardHeader = create_ssr_component(($$result, $$props, $$bindings, slots) => 
     $$bindings.id(id);
   $$result.css.add(css$4);
   return `<header>${validate_component(Stack, "Stack").$$render($$result, { stackSpace: cardHeaderStackSpace }, {}, {
-    default: () => `${eyebrow ? `<p class="${"font-size:small font-family:sans-serif"}"><!-- HTML_TAG_START -->${eyebrow}<!-- HTML_TAG_END --></p>` : ``}
+    default: () => `${eyebrow2 ? `<p class="${"font-size:small font-family:sans-serif"}"><!-- HTML_TAG_START -->${eyebrow2}<!-- HTML_TAG_END --></p>` : ``}
 
     ${validate_component(CardHeadline, "CardHeadline").$$render($$result, {
       cardData,
@@ -6421,10 +6500,10 @@ var CardHeader = create_ssr_component(($$result, $$props, $$bindings, slots) => 
       headerLevel,
       headlineFontSize
     }, {}, {
-      default: () => `${href ? `<a${add_attribute("href", href, 0)}${add_attribute("id", id.length ? id : null, 0)} data-track="${"click"}" data-event-category="${"body links"}" data-event-action="${"click"}"${add_attribute("data-event-label", headline, 0)} class="${"svelte-qsj75p"}"><!-- HTML_TAG_START -->${headline}<!-- HTML_TAG_END --></a>` : `<!-- HTML_TAG_START -->${headline}<!-- HTML_TAG_END -->`}`
+      default: () => `${href2 ? `<a${add_attribute("href", href2, 0)}${add_attribute("id", id.length ? id : null, 0)} data-track="${"click"}" data-event-category="${"body links"}" data-event-action="${"click"}"${add_attribute("data-event-label", headline2, 0)} class="${"svelte-qsj75p"}"><!-- HTML_TAG_START -->${headline2}<!-- HTML_TAG_END --></a>` : `<!-- HTML_TAG_START -->${headline2}<!-- HTML_TAG_END -->`}`
     })}
 
-    ${subHead ? `<p class="${"font-size:small font-family:sans-serif"}"><!-- HTML_TAG_START -->${subHead}<!-- HTML_TAG_END --></p>` : ``}`
+    ${subHead2 ? `<p class="${"font-size:small font-family:sans-serif"}"><!-- HTML_TAG_START -->${subHead2}<!-- HTML_TAG_END --></p>` : ``}`
   })}</header>`;
 });
 var css$3 = {
@@ -6433,28 +6512,28 @@ var css$3 = {
 };
 var Image = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let src2;
-  let { altText } = $$props;
-  let { caption = "" } = $$props;
+  let { altText: altText2 } = $$props;
+  let { caption: caption2 = "" } = $$props;
   let { className = "" } = $$props;
-  let { srcURL } = $$props;
+  let { srcURL: srcURL2 } = $$props;
   let { captionSpace = 0 } = $$props;
   let image;
   let captionSpaceComponent = captionSpace ? `--image-caption-space--component: ${captionSpace};` : "";
   let captionStyle = `${captionSpaceComponent}`;
-  if ($$props.altText === void 0 && $$bindings.altText && altText !== void 0)
-    $$bindings.altText(altText);
-  if ($$props.caption === void 0 && $$bindings.caption && caption !== void 0)
-    $$bindings.caption(caption);
+  if ($$props.altText === void 0 && $$bindings.altText && altText2 !== void 0)
+    $$bindings.altText(altText2);
+  if ($$props.caption === void 0 && $$bindings.caption && caption2 !== void 0)
+    $$bindings.caption(caption2);
   if ($$props.className === void 0 && $$bindings.className && className !== void 0)
     $$bindings.className(className);
-  if ($$props.srcURL === void 0 && $$bindings.srcURL && srcURL !== void 0)
-    $$bindings.srcURL(srcURL);
+  if ($$props.srcURL === void 0 && $$bindings.srcURL && srcURL2 !== void 0)
+    $$bindings.srcURL(srcURL2);
   if ($$props.captionSpace === void 0 && $$bindings.captionSpace && captionSpace !== void 0)
     $$bindings.captionSpace(captionSpace);
   $$result.css.add(css$3);
-  src2 = srcURL;
-  return `<figure class="${escape(null_to_empty(`${className}`)) + " svelte-1ufxp76"}"><img${add_attribute("src", src2, 0)}${add_attribute("alt", altText, 0)} loading="${"lazy"}" class="${"svelte-1ufxp76"}"${add_attribute("this", image, 0)}>
-  ${caption.length ? `<figcaption${add_attribute("style", captionStyle, 0)} class="${"font-size:small font-family:sans-serif svelte-1ufxp76"}"><!-- HTML_TAG_START -->${caption}<!-- HTML_TAG_END --></figcaption>` : ``}</figure>`;
+  src2 = srcURL2;
+  return `<figure class="${escape(null_to_empty(`${className}`)) + " svelte-1ufxp76"}"><img${add_attribute("src", src2, 0)}${add_attribute("alt", altText2, 0)} loading="${"lazy"}" class="${"svelte-1ufxp76"}"${add_attribute("this", image, 0)}>
+  ${caption2.length ? `<figcaption${add_attribute("style", captionStyle, 0)} class="${"font-size:small font-family:sans-serif svelte-1ufxp76"}"><!-- HTML_TAG_START -->${caption2}<!-- HTML_TAG_END --></figcaption>` : ``}</figure>`;
 });
 var Card = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { cardData } = $$props;
@@ -6466,7 +6545,7 @@ var Card = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { stackSpace = "var(--s-1)" } = $$props;
   let { relatedLinksStackSpace = "var(--s-3)" } = $$props;
   let { theme = "" } = $$props;
-  let { altText, caption, footnote, srcURL, text, relatedLinksHeadline, relatedLinks } = cardData;
+  let { altText: altText2, caption: caption2, footnote: footnote2, srcURL: srcURL2, text: text2, relatedLinksHeadline, relatedLinks } = cardData;
   if ($$props.cardData === void 0 && $$bindings.cardData && cardData !== void 0)
     $$bindings.cardData(cardData);
   if ($$props.cardHeaderStackSpace === void 0 && $$bindings.cardHeaderStackSpace && cardHeaderStackSpace !== void 0)
@@ -6486,7 +6565,7 @@ var Card = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   if ($$props.theme === void 0 && $$bindings.theme && theme !== void 0)
     $$bindings.theme(theme);
   return `<div${add_attribute("class", `card ${className}`, 0)}${add_attribute("data-theme", theme, 0)}>${validate_component(Stack, "Stack").$$render($$result, { stackSpace }, {}, {
-    default: () => `${srcURL ? `${validate_component(Image, "Image").$$render($$result, { altText, caption, srcURL }, {}, {})}` : ``}
+    default: () => `${srcURL2 ? `${validate_component(Image, "Image").$$render($$result, { altText: altText2, caption: caption2, srcURL: srcURL2 }, {}, {})}` : ``}
 
     ${validate_component(CardHeader, "CardHeader").$$render($$result, {
       cardData,
@@ -6496,7 +6575,7 @@ var Card = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       id
     }, {}, {})}
 
-    ${text ? `<p><!-- HTML_TAG_START -->${text}<!-- HTML_TAG_END --></p>` : ``}
+    ${text2 ? `<p><!-- HTML_TAG_START -->${text2}<!-- HTML_TAG_END --></p>` : ``}
 
     ${relatedLinks && relatedLinks.length ? `<div class="${"footnote font-size:small font-family:sans-serif"}">${validate_component(Stack, "Stack").$$render($$result, { stackSpace: relatedLinksStackSpace }, {}, {
       default: () => `${relatedLinksHeadline ? `<p><!-- HTML_TAG_START -->${relatedLinksHeadline}<!-- HTML_TAG_END --></p>` : ``}
@@ -6507,7 +6586,7 @@ var Card = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       })}`
     })}</div>` : ``}
 
-    ${footnote ? `<p class="${"footnote font-size:small font-family:sans-serif"}"><!-- HTML_TAG_START -->${footnote}<!-- HTML_TAG_END --></p>` : ``}
+    ${footnote2 ? `<p class="${"footnote font-size:small font-family:sans-serif"}"><!-- HTML_TAG_START -->${footnote2}<!-- HTML_TAG_END --></p>` : ``}
 
     ${slots.default ? slots.default({}) : ``}`
   })}</div>`;
@@ -6526,7 +6605,7 @@ var CardSideImage = create_ssr_component(($$result, $$props, $$bindings, slots) 
   let { stackSpace = "var(--s-1)" } = $$props;
   let { relatedLinksStackSpace = "var(--s-3)" } = $$props;
   let { theme = "" } = $$props;
-  let { altText, caption, srcURL } = cardData;
+  let { altText: altText2, caption: caption2, srcURL: srcURL2 } = cardData;
   let cardDataNoImage = { ...cardData, srcURL: void 0 };
   if ($$props.cardData === void 0 && $$bindings.cardData && cardData !== void 0)
     $$bindings.cardData(cardData);
@@ -6554,7 +6633,7 @@ var CardSideImage = create_ssr_component(($$result, $$props, $$bindings, slots) 
     $$bindings.relatedLinksStackSpace(relatedLinksStackSpace);
   if ($$props.theme === void 0 && $$bindings.theme && theme !== void 0)
     $$bindings.theme(theme);
-  return `<div${add_attribute("class", `card--side-image ${className}`, 0)}${add_attribute("data-theme", theme, 0)}>${srcURL ? `${validate_component(Stack, "Stack").$$render($$result, { stackSpace }, {}, {
+  return `<div${add_attribute("class", `card--side-image ${className}`, 0)}${add_attribute("data-theme", theme, 0)}>${srcURL2 ? `${validate_component(Stack, "Stack").$$render($$result, { stackSpace }, {}, {
     default: () => `${validate_component(Sidebar, "Sidebar").$$render($$result, {
       sidebarContentMinWidth: textMinWidth,
       sidebarOnLeft: imageOnLeft,
@@ -6571,7 +6650,7 @@ var CardSideImage = create_ssr_component(($$result, $$props, $$bindings, slots) 
         cardData: cardDataNoImage,
         theme
       }, {}, {})}</div>`,
-      sidebar: () => `<div slot="${"sidebar"}">${validate_component(Image, "Image").$$render($$result, { altText, caption, srcURL }, {}, {})}</div>`
+      sidebar: () => `<div slot="${"sidebar"}">${validate_component(Image, "Image").$$render($$result, { altText: altText2, caption: caption2, srcURL: srcURL2 }, {}, {})}</div>`
     })}
       ${slots.default ? slots.default({}) : ``}`
   })}` : `${validate_component(Card, "Card").$$render($$result, {
@@ -6654,7 +6733,7 @@ var css$2 = {
 };
 var CoverBackgroundVideo = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let $$slots = compute_slots(slots);
-  let { srcURL } = $$props;
+  let { srcURL: srcURL2 } = $$props;
   let { alt } = $$props;
   let { coverSpace = "var(--s0)" } = $$props;
   let { coverHeight = "100vh" } = $$props;
@@ -6664,11 +6743,11 @@ var CoverBackgroundVideo = create_ssr_component(($$result, $$props, $$bindings, 
   let { buttonTheme = "" } = $$props;
   let slotPresent = Object.keys($$slots).length > 0;
   let className = slotPresent ? "cover-with-background" : null;
-  srcURL.replace(/-small/, "");
-  srcURL.replace(/-small/, "").slice(0, -4).concat(".webm");
-  srcURL.replace(/-small/, "").slice(0, -4).concat(".mp4");
-  if ($$props.srcURL === void 0 && $$bindings.srcURL && srcURL !== void 0)
-    $$bindings.srcURL(srcURL);
+  srcURL2.replace(/-small/, "");
+  srcURL2.replace(/-small/, "").slice(0, -4).concat(".webm");
+  srcURL2.replace(/-small/, "").slice(0, -4).concat(".mp4");
+  if ($$props.srcURL === void 0 && $$bindings.srcURL && srcURL2 !== void 0)
+    $$bindings.srcURL(srcURL2);
   if ($$props.alt === void 0 && $$bindings.alt && alt !== void 0)
     $$bindings.alt(alt);
   if ($$props.coverSpace === void 0 && $$bindings.coverSpace && coverSpace !== void 0)
@@ -6685,7 +6764,7 @@ var CoverBackgroundVideo = create_ssr_component(($$result, $$props, $$bindings, 
     $$bindings.buttonTheme(buttonTheme);
   $$result.css.add(css$2);
   return `<div class="${escape(null_to_empty(className)) + " svelte-8cdu4n"}">${validate_component(Cover, "Cover").$$render($$result, { coverSpace, coverHeight }, {}, {
-    default: () => `${`<img${add_attribute("src", srcURL, 0)}${add_attribute("alt", alt, 0)} class="${"svelte-8cdu4n"}">`}
+    default: () => `${`<img${add_attribute("src", srcURL2, 0)}${add_attribute("alt", alt, 0)} class="${"svelte-8cdu4n"}">`}
 
     <div class="${"cover__centered"}">${slots.default ? slots.default({}) : ``}</div>
 
@@ -6823,24 +6902,24 @@ var WebsiteIntro = create_ssr_component(($$result, $$props, $$bindings, slots) =
     sidebar: () => `<div slot="${"sidebar"}"><img src="${"img/chris-ryan-guardian.jpg"}" alt="${"Head and shoulders of Chris Ryan wearing a jacket stood outside looking towards the camera."}" class="${"svelte-10r0osr"}"></div>`
   })}`;
 });
-var PortfolioSection = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  let { articles: articles2 } = $$props;
-  if ($$props.articles === void 0 && $$bindings.articles && articles2 !== void 0)
-    $$bindings.articles(articles2);
-  return `${validate_component(Stack, "Stack").$$render($$result, { stackSpace: "var(--s-1)" }, {}, {
-    default: () => `<h2 class="${"border-above"}">Portfolio</h2>
+var ProjectsSection = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let { projects } = $$props;
+  if ($$props.projects === void 0 && $$bindings.projects && projects !== void 0)
+    $$bindings.projects(projects);
+  return `<div class="${"border-above border-below"}">${validate_component(Stack, "Stack").$$render($$result, { stackSpace: "var(--s-1)" }, {}, {
+    default: () => `<h2>Projects</h2>
 
-	<p>These are some of my favourite projects from the last few years:</p>
+		<p>These are some of my favourite projects from the last few years:</p>
 
-	${validate_component(GridList, "GridList").$$render($$result, { gridSpace: "var(--s4)" }, {}, {
-      default: () => `${each(articles2, (cardData, i) => `${i === 0 || i === 3 ? `<li>${validate_component(CardSideImageBox, "CardSideImageBox").$$render($$result, {
+		${validate_component(GridList, "GridList").$$render($$result, { gridSpace: "var(--s4)" }, {}, {
+      default: () => `${each(projects, (cardData, i) => `${i === 0 || i === 3 ? `<li>${validate_component(CardSideImageBox, "CardSideImageBox").$$render($$result, {
         headerLevel: "none",
         headlineFontSize: "big-1",
         cardData,
         imageWidth: "20ch",
         sidebarSpace: "var(--s1)"
       }, {}, {})}
-				</li>` : `<li>${validate_component(CardSideImage, "CardSideImage").$$render($$result, {
+					</li>` : `<li>${validate_component(CardSideImage, "CardSideImage").$$render($$result, {
         headerLevel: "none",
         headlineFontSize: "big-1",
         cardData,
@@ -6848,89 +6927,50 @@ var PortfolioSection = create_ssr_component(($$result, $$props, $$bindings, slot
         sidebarSpace: "var(--s1)",
         imageOnLeft: false
       }, {}, {})}
-				</li>`}`)}`
+					</li>`}`)}`
     })}`
-  })}`;
-});
-var Footer = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `<div class="${"border-above"}">${validate_component(Stack, "Stack").$$render($$result, {}, {}, {
-    default: () => `<p>This website is built with <a href="${"https://kit.svelte.dev/"}">SvelteKit</a>, the typeface used
-			is
-			<a href="${"https://brailleinstitute.org/freefont"}">Atkinson Hyperlegible</a>.
-		</p>
-
-		<p>Credit Design is short for <strong>C</strong>hris
-			<strong>R</strong>yan <strong>Edit</strong>orial
-			<strong>Design</strong>, geddit?
-		</p>
-
-		<p>\xA9 Copyright 2021 Chris Ryan. No, sadly not \u2018that\u2019 <a href="${"https://en.wikipedia.org/wiki/Chris_Ryan"}">Chris Ryan</a>.
-		</p>`
   })}</div>`;
 });
-var articles = [
-  {
-    eyebrow: "Immersive article",
-    altText: "",
-    caption: "",
-    srcURL: "img/portfolio/diabetes-small.jpg",
-    headline: "Milestones in diabetes",
-    href: "https://www.nature.com/immersive/d42859-021-00002-5/index.html",
-    footnote: "Produced by <i>Nature Portfolio</i>.",
-    subHead: "2021",
-    text: "Timeline and 3D animation built with <strong>Svelte</strong>, <strong>Three.js</strong> and <strong>GSAP</strong>. Featuring an insulin molecule downloaded from <em>Protein Data Bank</em> and processed with <strong>Blender</strong>."
-  },
-  {
-    eyebrow: "Immersive article",
-    altText: "",
-    caption: "",
-    srcURL: "img/portfolio/malaria-small.jpg",
-    headline: "Malaria\u2019s ticking time bomb",
-    href: "https://www.nature.com/immersive/d41586-018-05772-z/index.html",
-    footnote: "Written by Amy Maxmen and edited by Brendan Maher.",
-    subHead: "2018",
-    text: "Full-screen scrollytelling map built with <strong>d3</strong>. Data processed with <strong>pandas</strong> and <strong>d3-geo</strong>, recorded in a <strong>Jupyter Notebook</strong> and uploaded to <a href='https://github.com/chris-creditdesign/nature-malaria-prep'>GitHub</a>."
-  },
-  {
-    eyebrow: "Interactive graphic",
-    altText: "",
-    caption: "",
-    srcURL: "img/portfolio/refugees-small.jpg",
-    headline: "What the numbers say about refugees",
-    href: "https://www.nature.com/news/what-the-numbers-say-about-refugees-1.21548",
-    footnote: "Static graphics and colour scheme by Jasiek Krzysztofiak. Written by Declan Butler and edited by Brendan Maher.",
-    subHead: "2017",
-    text: "Built with a customised version of the <strong>d3-sankey</strong> plugin to allow countries to be sorted by continent or by volume of people. The code for this graphic is available on <a href='https://github.com/chris-creditdesign/nature-refugees-sankey-2017'>GitHub</a>."
-  },
-  {
-    eyebrow: "Immersive article",
-    altText: "",
-    caption: "",
-    srcURL: "img/portfolio/genomic-sequencing-small.jpg",
-    headline: "Milestones in genomic sequencing",
-    href: "https://www.nature.com/immersive/d42859-020-00099-0/index.html",
-    footnote: "Produced by <i>Nature</i>, <i>Nature Genetics</i> and <i>Nature Reviews Genetics</i>.",
-    subHead: "2021",
-    text: "Timeline and circos diagram built with <strong>Svelte</strong> and <strong>D3</strong>. For performance the background animation is rendered using <strong>PixiJS</strong>."
-  }
-];
-var portfolioArticles = {
-  articles
-};
+var Footer = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  return `${validate_component(Stack, "Stack").$$render($$result, {}, {}, {
+    default: () => `<p>This website is built with <a href="${"https://kit.svelte.dev/"}">SvelteKit</a> and the code can be
+		viewed on <a href="${"https://github.com/chris-creditdesign/creditdesign.co.uk"}">GitHub</a>.
+	</p>
+
+	<p>The typeface used is
+		<a href="${"https://brailleinstitute.org/freefont"}">Atkinson Hyperlegible</a>.
+	</p>
+
+	<p>Credit Design is short for <strong>C</strong>hris
+		<strong>R</strong>yan <strong>Edit</strong>orial
+		<strong>Design</strong>, geddit?
+	</p>
+
+	<p>\xA9 Copyright 2021 Chris Ryan. No, sadly not \u2018that\u2019 <a href="${"https://en.wikipedia.org/wiki/Chris_Ryan"}">Chris Ryan</a>.
+	</p>`
+  })}`;
+});
 var css = {
   code: "footer.svelte-1fmtkg1{margin-bottom:var(--s1)}",
-  map: `{"version":3,"file":"index.svelte","sources":["index.svelte"],"sourcesContent":["<script context=\\"module\\" lang=\\"ts\\">export const prerender = true;\\n<\/script>\\n\\n<script>\\n\\timport { Center, Stack } from 'creditdesign-svelte-components';\\n\\timport { CoverBackgroundVideo } from 'nature-immersive-svelte-components';\\n\\timport WebsiteIntro from '$lib/WebsiteIntro/index.svelte';\\n\\timport PortfolioSection from '$lib/PortfolioSection/index.svelte';\\n\\timport Footer from '$lib/Footer/index.svelte';\\n\\timport portfolioArticles from '../content/portfolio-articles.json';\\n\\tlet { articles } = portfolioArticles;\\n<\/script>\\n\\n<style>\\n\\tfooter {\\n\\t\\tmargin-bottom: var(--s1);\\n\\t}\\n</style>\\n\\n<svelte:head>\\n\\t<title>Chris Ryan</title>\\n</svelte:head>\\n\\n<Stack stackSpace=\\"var(--s3)\\">\\n\\t<header>\\n\\t\\t<CoverBackgroundVideo\\n\\t\\t\\tsrcURL=\\"video/creditdesign-intro-small.jpg\\"\\n\\t\\t\\talt=\\"This is the alt text\\"\\n\\t\\t\\tcoverHeight=\\"40vh\\"\\n\\t\\t>\\n\\t\\t\\t<h1 class=\\"cover__centered\\">Credit Design</h1>\\n\\t\\t</CoverBackgroundVideo>\\n\\t</header>\\n\\n\\t<main>\\n\\t\\t<Stack stackSpace=\\"var(--s3)\\">\\n\\t\\t\\t<Center>\\n\\t\\t\\t\\t<WebsiteIntro />\\n\\t\\t\\t</Center>\\n\\n\\t\\t\\t<Center centerMeasure=\\"140ch\\">\\n\\t\\t\\t\\t<PortfolioSection {articles} />\\n\\t\\t\\t</Center>\\n\\t\\t</Stack>\\n\\t</main>\\n\\n\\t<footer>\\n\\t\\t<Center><Footer /></Center>\\n\\t</footer>\\n</Stack>\\n"],"names":[],"mappings":"AAcC,MAAM,eAAC,CAAC,AACP,aAAa,CAAE,IAAI,IAAI,CAAC,AACzB,CAAC"}`
+  map: `{"version":3,"file":"index.svelte","sources":["index.svelte"],"sourcesContent":["<script context=\\"module\\" lang=\\"ts\\">export const prerender = true;\\nexport async function load({ fetch }) {\\n    const res = await fetch(\`/projects.json\`);\\n    const { projects } = await res.json();\\n    return {\\n        props: { projects }\\n    };\\n}\\n<\/script>\\n\\n<script>\\n\\timport { Center, Stack } from 'creditdesign-svelte-components';\\n\\timport { CoverBackgroundVideo } from 'nature-immersive-svelte-components';\\n\\timport WebsiteIntro from '$lib/WebsiteIntro/index.svelte';\\n\\timport ProjectsSection from '$lib/ProjectsSection/index.svelte';\\n\\timport Footer from '$lib/Footer/index.svelte';\\n\\n\\texport let projects;\\n<\/script>\\n\\n<style>\\n\\tfooter {\\n\\t\\tmargin-bottom: var(--s1);\\n\\t}\\n</style>\\n\\n<svelte:head>\\n\\t<title>Chris Ryan</title>\\n</svelte:head>\\n\\n<Stack stackSpace=\\"var(--s3)\\">\\n\\t<header>\\n\\t\\t<CoverBackgroundVideo\\n\\t\\t\\tsrcURL=\\"video/creditdesign-intro-small.jpg\\"\\n\\t\\t\\talt=\\"Video montage showing clips of interactive graphics built by Chris Ryan.\\"\\n\\t\\t\\tcoverHeight=\\"40vh\\"\\n\\t\\t>\\n\\t\\t\\t<h1 class=\\"cover__centered\\">Credit Design</h1>\\n\\t\\t</CoverBackgroundVideo>\\n\\t</header>\\n\\n\\t<main>\\n\\t\\t<Stack stackSpace=\\"var(--s3)\\">\\n\\t\\t\\t<Center>\\n\\t\\t\\t\\t<WebsiteIntro />\\n\\t\\t\\t</Center>\\n\\n\\t\\t\\t<Center centerMeasure=\\"140ch\\">\\n\\t\\t\\t\\t<ProjectsSection projects={[projects[0], projects[2], projects[3], projects[1]]} />\\n\\t\\t\\t</Center>\\n\\t\\t</Stack>\\n\\t</main>\\n\\n\\t<footer>\\n\\t\\t<Center><Footer /></Center>\\n\\t</footer>\\n</Stack>\\n"],"names":[],"mappings":"AAqBC,MAAM,eAAC,CAAC,AACP,aAAa,CAAE,IAAI,IAAI,CAAC,AACzB,CAAC"}`
 };
 var prerender = true;
+async function load({ fetch: fetch2 }) {
+  const res = await fetch2(`/projects.json`);
+  const { projects } = await res.json();
+  return { props: { projects } };
+}
 var Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  let { articles: articles2 } = portfolioArticles;
+  let { projects } = $$props;
+  if ($$props.projects === void 0 && $$bindings.projects && projects !== void 0)
+    $$bindings.projects(projects);
   $$result.css.add(css);
   return `${$$result.head += `${$$result.title = `<title>Chris Ryan</title>`, ""}`, ""}
 
 ${validate_component(Stack, "Stack").$$render($$result, { stackSpace: "var(--s3)" }, {}, {
     default: () => `<header>${validate_component(CoverBackgroundVideo, "CoverBackgroundVideo").$$render($$result, {
       srcURL: "video/creditdesign-intro-small.jpg",
-      alt: "This is the alt text",
+      alt: "Video montage showing clips of interactive graphics built by Chris Ryan.",
       coverHeight: "40vh"
     }, {}, {
       default: () => `<h1 class="${"cover__centered"}">Credit Design</h1>`
@@ -6942,7 +6982,9 @@ ${validate_component(Stack, "Stack").$$render($$result, { stackSpace: "var(--s3)
       })}
 
 			${validate_component(Center, "Center").$$render($$result, { centerMeasure: "140ch" }, {}, {
-        default: () => `${validate_component(PortfolioSection, "PortfolioSection").$$render($$result, { articles: articles2 }, {}, {})}`
+        default: () => `${validate_component(ProjectsSection, "ProjectsSection").$$render($$result, {
+          projects: [projects[0], projects[2], projects[3], projects[1]]
+        }, {}, {})}`
       })}`
     })}</main>
 
@@ -6955,7 +6997,96 @@ var index = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   "default": Routes,
-  prerender
+  prerender,
+  load
+});
+var metadata$3 = {
+  "eyebrow": "Interactive graphic",
+  "altText": "",
+  "caption": "",
+  "srcURL": "img/portfolio/refugees-small.jpg",
+  "headline": "What the numbers say about refugees",
+  "href": "https://www.nature.com/news/what-the-numbers-say-about-refugees-1.21548",
+  "footnote": "Static graphics and colour scheme by Jasiek Krzysztofiak. Written by Declan Butler and edited by Brendan Maher.",
+  "subHead": 2017,
+  "text": "Built with a customised version of the <strong>d3-sankey</strong> plugin to allow countries to be sorted by continent or by volume of people. The code for this graphic is available on <a href='https://github.com/chris-creditdesign/nature-refugees-sankey-2017'>GitHub</a>."
+};
+var { eyebrow: eyebrow$3, altText: altText$3, caption: caption$3, srcURL: srcURL$3, headline: headline$3, href: href$3, footnote: footnote$3, subHead: subHead$3, text: text$3 } = metadata$3;
+var What_the_numbers_say_about_refugees = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  return `<h1>${escape(headline$3)}</h1>
+<p>${escape(eyebrow$3)}</p>`;
+});
+var whatTheNumbersSayAboutRefugees = /* @__PURE__ */ Object.freeze({
+  __proto__: null,
+  [Symbol.toStringTag]: "Module",
+  "default": What_the_numbers_say_about_refugees,
+  metadata: metadata$3
+});
+var metadata$2 = {
+  "eyebrow": "Immersive article",
+  "altText": "",
+  "caption": "",
+  "srcURL": "img/portfolio/genomic-sequencing-small.jpg",
+  "headline": "Milestones in genomic sequencing",
+  "href": "https://www.nature.com/immersive/d42859-020-00099-0/index.html",
+  "footnote": "Produced by <i>Nature</i>, <i>Nature Genetics</i> and <i>Nature Reviews Genetics</i>.",
+  "subHead": 2021,
+  "text": "Timeline and circos diagram built with <strong>Svelte</strong> and <strong>D3</strong>. For performance the background animation is rendered using <strong>PixiJS</strong>."
+};
+var { eyebrow: eyebrow$2, altText: altText$2, caption: caption$2, srcURL: srcURL$2, headline: headline$2, href: href$2, footnote: footnote$2, subHead: subHead$2, text: text$2 } = metadata$2;
+var Milestones_in_genomic_sequencing = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  return `<h1>${escape(headline$2)}</h1>
+<p>${escape(eyebrow$2)}</p>`;
+});
+var milestonesInGenomicSequencing = /* @__PURE__ */ Object.freeze({
+  __proto__: null,
+  [Symbol.toStringTag]: "Module",
+  "default": Milestones_in_genomic_sequencing,
+  metadata: metadata$2
+});
+var metadata$1 = {
+  "eyebrow": "Immersive article",
+  "altText": "",
+  "caption": "",
+  "srcURL": "img/portfolio/malaria-small.jpg",
+  "headline": "Malaria\u2019s ticking time bomb",
+  "href": "https://www.nature.com/immersive/d41586-018-05772-z/index.html",
+  "footnote": "Written by Amy Maxmen and edited by Brendan Maher.",
+  "subHead": 2018,
+  "text": "Full-screen scrollytelling map built with <strong>d3</strong>. Data processed with <strong>pandas</strong> and <strong>d3-geo</strong>, recorded in a <strong>Jupyter Notebook</strong> and uploaded to <a href='https://github.com/chris-creditdesign/nature-malaria-prep'>GitHub</a>."
+};
+var { eyebrow: eyebrow$1, altText: altText$1, caption: caption$1, srcURL: srcURL$1, headline: headline$1, href: href$1, footnote: footnote$1, subHead: subHead$1, text: text$1 } = metadata$1;
+var Malarias_ticking_time_bomb = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  return `<h1>${escape(headline$1)}</h1>
+<p>${escape(eyebrow$1)}</p>`;
+});
+var malariasTickingTimeBomb = /* @__PURE__ */ Object.freeze({
+  __proto__: null,
+  [Symbol.toStringTag]: "Module",
+  "default": Malarias_ticking_time_bomb,
+  metadata: metadata$1
+});
+var metadata = {
+  "eyebrow": "Immersive article",
+  "altText": "",
+  "caption": "",
+  "srcURL": "img/portfolio/diabetes-small.jpg",
+  "headline": "Milestones in diabetes",
+  "href": "https://www.nature.com/immersive/d42859-021-00002-5/index.html",
+  "footnote": "Produced by <i>Nature Portfolio</i>.",
+  "subHead": 2021,
+  "text": "Timeline and 3D animation built with <strong>Svelte</strong>, <strong>Three.js</strong> and <strong>GSAP</strong>. Featuring an insulin molecule downloaded from <em>Protein Data Bank</em> and processed with <strong>Blender</strong>."
+};
+var { eyebrow, altText, caption, srcURL, headline, href, footnote, subHead, text } = metadata;
+var Milestones_in_diabetes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  return `<h1>${escape(headline)}</h1>
+<p>${escape(eyebrow)}</p>`;
+});
+var milestonesInDiabetes = /* @__PURE__ */ Object.freeze({
+  __proto__: null,
+  [Symbol.toStringTag]: "Module",
+  "default": Milestones_in_diabetes,
+  metadata
 });
 
 // .svelte-kit/netlify/entry.js

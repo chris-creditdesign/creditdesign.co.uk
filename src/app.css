@@ -58,3 +58,8 @@ body {
   border-top: 4px solid var(--color--text);
 }
 
+.border-below {
+  padding-bottom: var(--s-1);
+  border-bottom: 4px solid var(--color--text);
+}
+
