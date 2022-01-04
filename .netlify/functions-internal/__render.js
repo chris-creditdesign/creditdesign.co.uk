@@ -6128,9 +6128,9 @@ function init(settings = default_settings) {
     amp: false,
     dev: false,
     entry: {
-      file: assets + "/_app/start-dd1d7661.js",
+      file: assets + "/_app/start-3a715dae.js",
       css: [assets + "/_app/assets/start-d5b4de3e.css", assets + "/_app/assets/vendor-61e1ccbd.css"],
-      js: [assets + "/_app/start-dd1d7661.js", assets + "/_app/chunks/vendor-67e56bed.js"]
+      js: [assets + "/_app/start-3a715dae.js", assets + "/_app/chunks/vendor-67e56bed.js"]
     },
     fetched: void 0,
     floc: false,
@@ -6182,28 +6182,28 @@ var manifest = {
       type: "page",
       pattern: /^\/projects\/what-the-numbers-say-about-refugees\/?$/,
       params: empty,
-      a: ["src/routes/__layout.svelte", "src/routes/projects/what-the-numbers-say-about-refugees.md"],
+      a: ["src/routes/__layout.svelte", "src/routes/projects/what-the-numbers-say-about-refugees/index.md"],
       b: [".svelte-kit/build/components/error.svelte"]
     },
     {
       type: "page",
       pattern: /^\/projects\/milestones-in-genomic-sequencing\/?$/,
       params: empty,
-      a: ["src/routes/__layout.svelte", "src/routes/projects/milestones-in-genomic-sequencing.md"],
+      a: ["src/routes/__layout.svelte", "src/routes/projects/milestones-in-genomic-sequencing/index.md"],
       b: [".svelte-kit/build/components/error.svelte"]
     },
     {
       type: "page",
       pattern: /^\/projects\/malarias-ticking-time-bomb\/?$/,
       params: empty,
-      a: ["src/routes/__layout.svelte", "src/routes/projects/malarias-ticking-time-bomb.md"],
+      a: ["src/routes/__layout.svelte", "src/routes/projects/malarias-ticking-time-bomb/index.md"],
       b: [".svelte-kit/build/components/error.svelte"]
     },
     {
       type: "page",
       pattern: /^\/projects\/milestones-in-diabetes\/?$/,
       params: empty,
-      a: ["src/routes/__layout.svelte", "src/routes/projects/milestones-in-diabetes.md"],
+      a: ["src/routes/__layout.svelte", "src/routes/projects/milestones-in-diabetes/index.md"],
       b: [".svelte-kit/build/components/error.svelte"]
     }
   ]
@@ -6222,22 +6222,22 @@ var module_lookup = {
     return error;
   }),
   "src/routes/index.svelte": () => Promise.resolve().then(function() {
+    return index$4;
+  }),
+  "src/routes/projects/what-the-numbers-say-about-refugees/index.md": () => Promise.resolve().then(function() {
+    return index$3;
+  }),
+  "src/routes/projects/milestones-in-genomic-sequencing/index.md": () => Promise.resolve().then(function() {
+    return index$2;
+  }),
+  "src/routes/projects/malarias-ticking-time-bomb/index.md": () => Promise.resolve().then(function() {
+    return index$1;
+  }),
+  "src/routes/projects/milestones-in-diabetes/index.md": () => Promise.resolve().then(function() {
     return index;
-  }),
-  "src/routes/projects/what-the-numbers-say-about-refugees.md": () => Promise.resolve().then(function() {
-    return whatTheNumbersSayAboutRefugees;
-  }),
-  "src/routes/projects/milestones-in-genomic-sequencing.md": () => Promise.resolve().then(function() {
-    return milestonesInGenomicSequencing;
-  }),
-  "src/routes/projects/malarias-ticking-time-bomb.md": () => Promise.resolve().then(function() {
-    return malariasTickingTimeBomb;
-  }),
-  "src/routes/projects/milestones-in-diabetes.md": () => Promise.resolve().then(function() {
-    return milestonesInDiabetes;
   })
 };
-var metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-5971fffb.js", "css": ["assets/pages/__layout.svelte-cf524309.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/__layout.svelte-5971fffb.js", "chunks/vendor-67e56bed.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-f6d64f2b.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["error.svelte-f6d64f2b.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-89048bb1.js", "css": ["assets/pages/index.svelte-90ed27b2.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/index.svelte-89048bb1.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/projects/what-the-numbers-say-about-refugees.md": { "entry": "pages/projects/what-the-numbers-say-about-refugees.md-28cb70f5.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["pages/projects/what-the-numbers-say-about-refugees.md-28cb70f5.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/projects/milestones-in-genomic-sequencing.md": { "entry": "pages/projects/milestones-in-genomic-sequencing.md-41e59e99.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["pages/projects/milestones-in-genomic-sequencing.md-41e59e99.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/projects/malarias-ticking-time-bomb.md": { "entry": "pages/projects/malarias-ticking-time-bomb.md-8760ba50.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["pages/projects/malarias-ticking-time-bomb.md-8760ba50.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/projects/milestones-in-diabetes.md": { "entry": "pages/projects/milestones-in-diabetes.md-a1c6b7e8.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["pages/projects/milestones-in-diabetes.md-a1c6b7e8.js", "chunks/vendor-67e56bed.js"], "styles": [] } };
+var metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-5971fffb.js", "css": ["assets/pages/__layout.svelte-cf524309.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/__layout.svelte-5971fffb.js", "chunks/vendor-67e56bed.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-f6d64f2b.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["error.svelte-f6d64f2b.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-89048bb1.js", "css": ["assets/pages/index.svelte-90ed27b2.css", "assets/vendor-61e1ccbd.css"], "js": ["pages/index.svelte-89048bb1.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/projects/what-the-numbers-say-about-refugees/index.md": { "entry": "pages/projects/what-the-numbers-say-about-refugees/index.md-57f123eb.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["pages/projects/what-the-numbers-say-about-refugees/index.md-57f123eb.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/projects/milestones-in-genomic-sequencing/index.md": { "entry": "pages/projects/milestones-in-genomic-sequencing/index.md-7addd352.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["pages/projects/milestones-in-genomic-sequencing/index.md-7addd352.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/projects/malarias-ticking-time-bomb/index.md": { "entry": "pages/projects/malarias-ticking-time-bomb/index.md-6e92d911.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["pages/projects/malarias-ticking-time-bomb/index.md-6e92d911.js", "chunks/vendor-67e56bed.js"], "styles": [] }, "src/routes/projects/milestones-in-diabetes/index.md": { "entry": "pages/projects/milestones-in-diabetes/index.md-4fdb7697.js", "css": ["assets/vendor-61e1ccbd.css"], "js": ["pages/projects/milestones-in-diabetes/index.md-4fdb7697.js", "chunks/vendor-67e56bed.js"], "styles": [] } };
 async function load_component(file) {
   const { entry, css: css2, js, styles } = metadata_lookup[file];
   return {
@@ -6255,19 +6255,19 @@ function render(request, {
   return respond({ ...request, host }, options, { prerender: prerender2 });
 }
 var get = async () => {
-  let markdown_pages_glob = { "./malarias-ticking-time-bomb.md": () => Promise.resolve().then(function() {
-    return malariasTickingTimeBomb;
-  }), "./milestones-in-diabetes.md": () => Promise.resolve().then(function() {
-    return milestonesInDiabetes;
-  }), "./milestones-in-genomic-sequencing.md": () => Promise.resolve().then(function() {
-    return milestonesInGenomicSequencing;
-  }), "./what-the-numbers-say-about-refugees.md": () => Promise.resolve().then(function() {
-    return whatTheNumbersSayAboutRefugees;
+  let markdown_pages_glob = { "./malarias-ticking-time-bomb/index.md": () => Promise.resolve().then(function() {
+    return index$1;
+  }), "./milestones-in-diabetes/index.md": () => Promise.resolve().then(function() {
+    return index;
+  }), "./milestones-in-genomic-sequencing/index.md": () => Promise.resolve().then(function() {
+    return index$2;
+  }), "./what-the-numbers-say-about-refugees/index.md": () => Promise.resolve().then(function() {
+    return index$3;
   }) };
   let markdwon_pages_entries = Object.entries(markdown_pages_glob);
   let projects = await Promise.all(markdwon_pages_entries.map(async ([path, page]) => {
     const { metadata: metadata2 } = await page();
-    const slug = path.split("/").pop().split(".").shift();
+    const slug = path.match(/.\/(.*)\/index.md/)[1];
     return { ...metadata2, slug };
   }));
   projects.sort((a, b) => {
@@ -6993,7 +6993,7 @@ ${validate_component(Stack, "Stack").$$render($$result, { stackSpace: "var(--s3)
     })}</footer>`
   })}`;
 });
-var index = /* @__PURE__ */ Object.freeze({
+var index$4 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   "default": Routes,
@@ -7016,7 +7016,7 @@ var What_the_numbers_say_about_refugees = create_ssr_component(($$result, $$prop
   return `<h1>${escape(headline$3)}</h1>
 <p>${escape(eyebrow$3)}</p>`;
 });
-var whatTheNumbersSayAboutRefugees = /* @__PURE__ */ Object.freeze({
+var index$3 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   "default": What_the_numbers_say_about_refugees,
@@ -7038,7 +7038,7 @@ var Milestones_in_genomic_sequencing = create_ssr_component(($$result, $$props, 
   return `<h1>${escape(headline$2)}</h1>
 <p>${escape(eyebrow$2)}</p>`;
 });
-var milestonesInGenomicSequencing = /* @__PURE__ */ Object.freeze({
+var index$2 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   "default": Milestones_in_genomic_sequencing,
@@ -7060,7 +7060,7 @@ var Malarias_ticking_time_bomb = create_ssr_component(($$result, $$props, $$bind
   return `<h1>${escape(headline$1)}</h1>
 <p>${escape(eyebrow$1)}</p>`;
 });
-var malariasTickingTimeBomb = /* @__PURE__ */ Object.freeze({
+var index$1 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   "default": Malarias_ticking_time_bomb,
@@ -7082,7 +7082,7 @@ var Milestones_in_diabetes = create_ssr_component(($$result, $$props, $$bindings
   return `<h1>${escape(headline)}</h1>
 <p>${escape(eyebrow)}</p>`;
 });
-var milestonesInDiabetes = /* @__PURE__ */ Object.freeze({
+var index = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   "default": Milestones_in_diabetes,

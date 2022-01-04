@@ -1,6 +1,6 @@
 export const get = async () => {
 	// https://vitejs.dev/guide/features.html#glob-import
-	let markdown_pages_glob = import.meta.glob('./*.md');
+	let markdown_pages_glob = import.meta.glob('./*/index.md');
 
 	let markdwon_pages_entries = Object.entries(markdown_pages_glob);
 
@@ -8,9 +8,9 @@ export const get = async () => {
 		markdwon_pages_entries.map(async ([path, page]) => {
 			const { metadata } = await page();
 
-			// convert from "./milestones-in-diabetes.md"
+			// convert from "./milestones-in-diabetes/index.md"
 			// to "milestones-in-diabetes"
-			const slug = path.split('/').pop().split('.').shift();
+			const slug = path.match(/.\/(.*)\/index.md/)[1];
 
 			return { ...metadata, slug };
 		})
