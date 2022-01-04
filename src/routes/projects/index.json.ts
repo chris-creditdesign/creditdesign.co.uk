@@ -1,10 +1,10 @@
 export const get = async () => {
 	// https://vitejs.dev/guide/features.html#glob-import
-	let markdown_pages_glob = import.meta.glob('./*/index.md');
+	const markdown_pages_glob = import.meta.glob('./*/index.md');
 
-	let markdwon_pages_entries = Object.entries(markdown_pages_glob);
+	const markdwon_pages_entries = Object.entries(markdown_pages_glob);
 
-	let projects = await Promise.all(
+	const projects = await Promise.all(
 		markdwon_pages_entries.map(async ([path, page]) => {
 			const { metadata } = await page();
 
@@ -17,8 +17,8 @@ export const get = async () => {
 	);
 
 	projects.sort((a, b) => {
-		let dateA = parseInt(a.subHead);
-		let dateB = parseInt(b.subHead);
+		const dateA = parseInt(a.subHead);
+		const dateB = parseInt(b.subHead);
 
 		return dateB - dateA;
 	});
