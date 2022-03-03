@@ -1,6 +1,6 @@
 <script>
-	import { Stack, GridList } from 'creditdesign-svelte-components';
-	import { CardSideImage, CardSideImageBox } from 'nature-immersive-svelte-components';
+	import { Stack, Grid } from 'creditdesign-svelte-components';
+	// import { CardSideImage, CardSideImageBox } from 'nature-immersive-svelte-components';
 
 	export let projects;
 </script>
@@ -11,31 +11,33 @@
 
 		<p>These are some of my favourite projects from the last few years:</p>
 
-		<GridList gridSpace="var(--s4)">
+		<Grid gridSpace="var(--s4)" list={true}>
 			{#each projects as cardData, i}
 				{#if i === 0 || i === 3}
 					<li>
-						<CardSideImageBox
+						project {i}
+						<!-- <CardSideImageBox
 							headerLevel="none"
 							headlineFontSize="big-1"
 							{cardData}
 							imageWidth="20ch"
 							sidebarSpace="var(--s1)"
-						/>
+						/> -->
 					</li>
 				{:else}
 					<li>
-						<CardSideImage
+						project {i}
+						<!-- <CardSideImage
 							headerLevel="none"
 							headlineFontSize="big-1"
 							{cardData}
 							imageWidth="20ch"
 							sidebarSpace="var(--s1)"
 							imageOnLeft={false}
-						/>
+						/> -->
 					</li>
 				{/if}
 			{/each}
-		</GridList>
+		</Grid>
 	</Stack>
 </div>

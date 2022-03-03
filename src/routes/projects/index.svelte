@@ -13,8 +13,6 @@
 
 <script>
 	export let projects;
-
-	console.log(projects);
 </script>
 
 <h1>Hello</h1>

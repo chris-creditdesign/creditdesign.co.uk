@@ -13,7 +13,6 @@
 
 <script>
 	import { Center, Stack } from 'creditdesign-svelte-components';
-	import { CoverBackgroundVideo } from 'nature-immersive-svelte-components';
 	import WebsiteIntro from '$lib/WebsiteIntro/index.svelte';
 	import ProjectsSection from '$lib/ProjectsSection/index.svelte';
 	import Footer from '$lib/Footer/index.svelte';
@@ -33,13 +32,7 @@
 
 <Stack stackSpace="var(--s3)">
 	<header>
-		<CoverBackgroundVideo
-			srcURL="video/creditdesign-intro-small.jpg"
-			alt="Video montage showing clips of interactive graphics built by Chris Ryan."
-			coverHeight="40vh"
-		>
-			<h1 class="cover__centered">Credit Design</h1>
-		</CoverBackgroundVideo>
+		<h1 class="cover__centered">Credit Design</h1>
 	</header>
 
 	<main>

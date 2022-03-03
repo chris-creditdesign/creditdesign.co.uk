@@ -9,7 +9,6 @@ export const get = async () => {
 			const result = await page();
 
 			const { metadata } = result;
-			console.log(metadata);
 
 			// convert from "./milestones-in-diabetes/index.md"
 			// to "milestones-in-diabetes"
