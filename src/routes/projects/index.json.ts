@@ -6,7 +6,10 @@ export const get = async () => {
 
 	const projects = await Promise.all(
 		markdwon_pages_entries.map(async ([path, page]) => {
-			const { metadata } = await page();
+			const result = await page();
+
+			const { metadata } = result;
+			console.log(metadata);
 
 			// convert from "./milestones-in-diabetes/index.md"
 			// to "milestones-in-diabetes"

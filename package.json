@@ -22,7 +22,9 @@
 		"eslint": "^7.32.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^3.2.1",
+		"mdsvex": "^0.9.8",
 		"nature-immersive-svelte-components": "^0.5.7",
+		"postcss-import": "^14.0.2",
 		"prettier": "^2.4.1",
 		"prettier-plugin-svelte": "^2.4.0",
 		"stylelint": "^14.2.0",
@@ -34,8 +36,7 @@
 		"svelte-check": "^2.2.6",
 		"svelte-preprocess": "^4.10.1",
 		"tslib": "^2.3.1",
-		"typescript": "^4.4.3",
-		"mdsvex": "^0.9.8"
+		"typescript": "^4.4.3"
 	},
 	"type": "module"
 }

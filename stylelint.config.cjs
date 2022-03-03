@@ -217,7 +217,8 @@ module.exports = {
 		/* In order to allow svelte's :global() modifier */
 		'selector-pseudo-class-no-unknown': null,
 		/* Stops stylelint butting heads with Svelet for VS Code's formatting for long lines */
-
-		'declaration-colon-newline-after': null
+		'declaration-colon-newline-after': null,
+		/* allow any naming pattern for custom property names */
+		'custom-property-pattern': null
 	}
 };
