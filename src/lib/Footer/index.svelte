@@ -1,17 +1,12 @@
 <style>
-	footer {
-		width: 100%;
-		font-size: var(--font-size-small-1);
-	}
-
 	p {
 		margin: 0;
 	}
 </style>
 
 <footer
-	class="stack box margin-block-start:auto"
-	style="--box-space--component: var(--s3); --stack-column-space--component: var(--s2);"
+	class="grid box center font-size:small"
+	style="--center-measure--component: var(--measure-big); --grid-space--component: var(--s-1);"
 >
 	<p>
 		This website is built with <a href="https://kit.svelte.dev/">SvelteKit</a> and the code can be

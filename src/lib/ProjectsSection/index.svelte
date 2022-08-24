@@ -4,6 +4,12 @@
 	export let projects;
 </script>
 
+<style>
+	li {
+		max-width: none;
+	}
+</style>
+
 <div class="border-above border-below">
 	<Stack stackSpace="var(--s-1)">
 		<h2>Projects</h2>

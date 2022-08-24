@@ -30,16 +30,16 @@
 				I enjoy designing interactive graphics with <strong>D3</strong>,
 				<strong>Three.js</strong>,
 				<strong>PixiJS</strong> and <strong>Svelte</strong>, wrangling data with
-				<strong>Python</strong> and animating with
+				<strong>Python</strong> and <strong>R</strong> and animating with
 				<strong>Adobe After Effects</strong>.
 			</p>
 
 			<p>
 				You can find me on
 				<a href="https://twitter.com/creditdesign">Twitter</a>,
-				<a href="https://github.com/chris-creditdesign">GitHub</a>
-				and
-				<a href="https://codepen.io/chris-creditdesign">Codepen</a>.
+				<a href="https://github.com/chris-creditdesign">GitHub</a>,
+				<a href="https://codepen.io/chris-creditdesign">Codepen</a>
+				and <a href="https://observablehq.com/@chris-creditdesign">Observable</a>.
 			</p>
 		</Stack>
 	</div>

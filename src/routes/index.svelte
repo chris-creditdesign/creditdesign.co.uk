@@ -15,6 +15,7 @@
 	import { Center, Stack } from 'creditdesign-svelte-components';
 	import WebsiteIntro from '$lib/WebsiteIntro/index.svelte';
 	import ProjectsSection from '$lib/ProjectsSection/index.svelte';
+	import OpenSource from '$lib/OpenSource/index.svelte';
 
 	export let projects;
 </script>
@@ -31,6 +32,10 @@
 
 		<div class="center" style="--center-measure--component: 140ch;">
 			<ProjectsSection projects={[projects[0], projects[2], projects[3], projects[1]]} />
+		</div>
+
+		<div class="center">
+			<OpenSource />
 		</div>
 	</Stack>
 </main>
