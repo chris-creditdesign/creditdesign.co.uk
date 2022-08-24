@@ -9,7 +9,7 @@
 	}
 </style>
 
-<Sidebar sidebarSpace="var(--s1)" sidebarContentMinWidth="60%">
+<Sidebar sidebarSpace="var(--s1)" sidebarContentMinWidth="50%">
 	<div slot="sidebar">
 		<img
 			src="img/chris-ryan-guardian.jpg"

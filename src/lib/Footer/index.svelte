@@ -1,8 +1,18 @@
-<script>
-	import { Stack } from 'creditdesign-svelte-components';
-</script>
+<style>
+	footer {
+		width: 100%;
+		font-size: var(--font-size-small-1);
+	}
 
-<Stack>
+	p {
+		margin: 0;
+	}
+</style>
+
+<footer
+	class="stack box margin-block-start:auto"
+	style="--box-space--component: var(--s3); --stack-column-space--component: var(--s2);"
+>
 	<p>
 		This website is built with <a href="https://kit.svelte.dev/">SvelteKit</a> and the code can be
 		viewed on <a href="https://github.com/chris-creditdesign/creditdesign.co.uk">GitHub</a>.
@@ -24,4 +34,4 @@
 			href="https://en.wikipedia.org/wiki/Chris_Ryan">Chris Ryan</a
 		>.
 	</p>
-</Stack>
+</footer>

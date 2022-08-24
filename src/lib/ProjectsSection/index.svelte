@@ -1,7 +1,6 @@
 <script>
 	import { Stack, Grid } from 'creditdesign-svelte-components';
-	// import { CardSideImage, CardSideImageBox } from 'nature-immersive-svelte-components';
-
+	import { CardSideImage, CardSideImageBox } from 'nature-immersive-svelte-components';
 	export let projects;
 </script>
 
@@ -15,26 +14,24 @@
 			{#each projects as cardData, i}
 				{#if i === 0 || i === 3}
 					<li>
-						project {i}
-						<!-- <CardSideImageBox
+						<CardSideImageBox
 							headerLevel="none"
 							headlineFontSize="big-1"
 							{cardData}
 							imageWidth="20ch"
 							sidebarSpace="var(--s1)"
-						/> -->
+						/>
 					</li>
 				{:else}
 					<li>
-						project {i}
-						<!-- <CardSideImage
+						<CardSideImage
 							headerLevel="none"
 							headlineFontSize="big-1"
 							{cardData}
 							imageWidth="20ch"
 							sidebarSpace="var(--s1)"
 							imageOnLeft={false}
-						/> -->
+						/>
 					</li>
 				{/if}
 			{/each}

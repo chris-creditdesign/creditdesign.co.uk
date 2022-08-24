@@ -1,13 +1,8 @@
 /* Write your global styles here, in PostCSS syntax */
 
+@import 'nature-immersive-svelte-components/static/css/light.css';
 @import "./css/fonts.css";
-@import 'nature-immersive-svelte-components/static/css/index.css';
 @import './css/custom-props.css';
-@import 'nature-immersive-svelte-components/static/css/font-size.css';
-@import 'nature-immersive-svelte-components/static/css/light-theme.css';
-@import 'nature-immersive-svelte-components/static/css/themes.css';
-@import 'nature-immersive-svelte-components/static/css/buttons.css';
-@import 'nature-immersive-svelte-components/static/css/utilities.css';
 @import "./css/modifiers.css";
 @import "./css/prism-vs.css";
 

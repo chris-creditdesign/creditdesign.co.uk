@@ -1,15 +1,17 @@
 /* --------------------------- Light colour scheme -------------------------- */
 body {
-  --color--link: var(--color--blue-1);
-  --color--link-invert: var(--color--orange-1);
-  --color--link-active: var(--color--black-0);
-  --color--link-active-invert: var(--color--black-0);
-  --color--outline: var(--color--yellow-1);
-  --color--background: var(--color--white-0);
-  --color--background-invert: var(--color--black-0);
-  --color--text: var(--color--black-0);
-  --color--text-invert: var(--color--white-0);
-  --color--text-disabled: var(--color--black-2);
-  --color--button-expanded: var(--color--link-active);
-  --color--button-background-expanded: var(--color--white-2);
+  --color--link: var(--color--secondary-3);
+  --color--link-invert: ;
+  --color--link-active: ;
+  --color--link-active-invert: ;
+  --color--outline: ;
+  --color--background: ;
+  --color--background-invert: ;
+  --color--text: var(--color--accent-1);
+  --color--text-invert: ;
+  --color--heading: var(--color--black-2);
+  --color--heading-invert: ;
+  --color--text-disabled: ;
+  --color--button-expanded: ;
+  --color--button-background-expanded: ;
 }
