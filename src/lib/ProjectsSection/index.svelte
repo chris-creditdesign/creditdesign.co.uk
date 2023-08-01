@@ -18,7 +18,7 @@
 
 		<Grid gridSpace="var(--s4)" list={true}>
 			{#each projects as cardData, i}
-				{#if i === 0 || i === 3}
+				{#if i % 3 > 0}
 					<li>
 						<CardSideImageBox
 							headerLevel="none"

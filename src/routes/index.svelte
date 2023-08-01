@@ -31,7 +31,7 @@
 		</Center>
 
 		<div class="center" style="--center-measure--component: 140ch;">
-			<ProjectsSection projects={[projects[0], projects[2], projects[3], projects[1]]} />
+			<ProjectsSection {projects} />
 		</div>
 
 		<div class="center">

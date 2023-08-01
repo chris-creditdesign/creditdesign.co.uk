@@ -25,7 +25,7 @@
 	</p>
 
 	<p>
-		© Copyright 2021 Chris Ryan. No, sadly not ‘that’ <a
+		© Copyright 2022 Chris Ryan. No, sadly not ‘that’ <a
 			href="https://en.wikipedia.org/wiki/Chris_Ryan">Chris Ryan</a
 		>.
 	</p>
