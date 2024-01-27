@@ -1,0 +1,35 @@
+@at-root html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	@at-root html {
+		scroll-behavior: auto;
+	}
+}
+
+@at-root body {
+	margin: 0;
+	color: var(--color--text);
+	background-color: var(--color--background);
+
+	/* https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth */
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+@import '../../node_modules/creditdesign-svelte-components/scss/index.scss';
+@import '../../node_modules/nature-immersive-svelte-components/src/scss/font-size.scss';
+@import '../../node_modules/nature-immersive-svelte-components/src/scss/fonts.scss';
+@import '../../node_modules/nature-immersive-svelte-components/src/scss/custom-props.scss';
+@import '../../node_modules/nature-immersive-svelte-components/src/scss/light-theme.scss';
+@import '../../node_modules/nature-immersive-svelte-components/src/scss/elements.scss';
+@import '../../node_modules/nature-immersive-svelte-components/src/scss/buttons.scss';
+@import '../../node_modules/nature-immersive-svelte-components/src/scss/themes.scss';
+@import '../../node_modules/nature-immersive-svelte-components/src/scss/modifiers.scss';
+@import '../../node_modules/nature-immersive-svelte-components/src/scss/utilities.scss';
+@import '../../node_modules/nature-immersive-svelte-components/src/scss/storybook-fixes.scss';
+
+@import './fonts.scss';
+@import './custom-props.scss';
+@import './modifiers.scss';
+@import './prism-vs.scss';

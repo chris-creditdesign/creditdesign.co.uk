@@ -4,17 +4,9 @@
 	export let projects;
 </script>
 
-<style>
-	li {
-		max-width: none;
-	}
-</style>
-
 <div class="border-above border-below">
 	<Stack stackSpace="var(--s-1)">
 		<h2>Projects</h2>
-
-		<p>These are some of my favourite projects from the last few years:</p>
 
 		<Grid gridSpace="var(--s4)" list={true}>
 			{#each projects as cardData, i}
@@ -44,3 +36,9 @@
 		</Grid>
 	</Stack>
 </div>
+
+<style>
+	li {
+		max-width: none;
+	}
+</style>

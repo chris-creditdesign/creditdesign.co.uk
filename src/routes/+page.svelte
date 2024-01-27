@@ -1,23 +1,10 @@
-<script context="module" lang="ts">
-	export const prerender = true;
-
-	export async function load({ fetch }) {
-		const res = await fetch(`/projects.js`);
-		const { projects } = await res.json();
-
-		return {
-			props: { projects }
-		};
-	}
-</script>
-
 <script>
 	import { Center, Stack } from 'creditdesign-svelte-components';
 	import WebsiteIntro from '$lib/WebsiteIntro/index.svelte';
 	import ProjectsSection from '$lib/ProjectsSection/index.svelte';
 	import OpenSource from '$lib/OpenSource/index.svelte';
 
-	export let projects;
+	export let data;
 </script>
 
 <svelte:head>
@@ -31,7 +18,7 @@
 		</Center>
 
 		<div class="center" style="--center-measure--component: 140ch;">
-			<ProjectsSection {projects} />
+			<ProjectsSection projects={data.projects} />
 		</div>
 
 		<div class="center">

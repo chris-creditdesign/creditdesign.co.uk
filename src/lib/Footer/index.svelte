@@ -1,9 +1,3 @@
-<style>
-	p {
-		margin: 0;
-	}
-</style>
-
 <footer
 	class="grid box center font-size:small"
 	style="--center-measure--component: var(--measure-big); --grid-space--component: var(--s-1);"
@@ -25,8 +19,14 @@
 	</p>
 
 	<p>
-		© Copyright 2022 Chris Ryan. No, sadly not ‘that’ <a
+		© Copyright 2024 Chris Ryan. No, sadly not ‘that’ <a
 			href="https://en.wikipedia.org/wiki/Chris_Ryan">Chris Ryan</a
 		>.
 	</p>
 </footer>
+
+<style>
+	p {
+		margin: 0;
+	}
+</style>
