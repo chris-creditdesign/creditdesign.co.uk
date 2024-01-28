@@ -14,7 +14,7 @@
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
-		"scss": "sass --no-source-map --style=expanded src/scss/index.scss src/app.css"
+		"scss": "sass --no-source-map --style=expanded src/scss/index.scss static/css/index.css"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
