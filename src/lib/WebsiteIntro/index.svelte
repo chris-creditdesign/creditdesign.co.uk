@@ -29,7 +29,7 @@
 
 			<p>
 				You can find me on
-				<a href="https://twitter.com/creditdesign">Twitter/X</a>,
+				<a href="https://bsky.app/profile/creditdesign.bsky.social">Bluesky</a>,
 				<a href="https://github.com/chris-creditdesign">GitHub</a>,
 				<a href="https://codepen.io/chris-creditdesign">Codepen</a>
 				and <a href="https://observablehq.com/@chris-creditdesign">Observable</a>.
