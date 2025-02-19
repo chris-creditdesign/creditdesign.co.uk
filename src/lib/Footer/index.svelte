@@ -19,7 +19,7 @@
 	</p>
 
 	<p>
-		© Copyright 2024 Chris Ryan. No, sadly not ‘that’ <a
+		© Copyright 2025 Chris Ryan. No, sadly not ‘that’ <a
 			href="https://en.wikipedia.org/wiki/Chris_Ryan">Chris Ryan</a
 		>.
 	</p>
