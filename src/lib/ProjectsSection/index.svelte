@@ -10,17 +10,7 @@
 
 		<Grid gridSpace="var(--s4)" list={true}>
 			{#each projects as cardData, i}
-				{#if i % 3 > 0}
-					<li>
-						<CardSideImageBox
-							headerLevel="none"
-							headlineFontSize="big-1"
-							{cardData}
-							imageWidth="20ch"
-							sidebarSpace="var(--s1)"
-						/>
-					</li>
-				{:else}
+				{#if (i %4 === 0) || (i %4 === 3)}
 					<li>
 						<CardSideImage
 							headerLevel="none"
@@ -29,6 +19,16 @@
 							imageWidth="20ch"
 							sidebarSpace="var(--s1)"
 							imageOnLeft={false}
+						/>
+					</li>
+				{:else}
+					<li>
+						<CardSideImageBox
+							headerLevel="none"
+							headlineFontSize="big-1"
+							{cardData}
+							imageWidth="20ch"
+							sidebarSpace="var(--s1)"
 						/>
 					</li>
 				{/if}
