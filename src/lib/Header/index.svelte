@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { CoverBackgroundVideo } from 'nature-immersive-svelte-components';
 </script>
 

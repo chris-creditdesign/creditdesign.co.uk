@@ -1,4 +1,6 @@
-export const projects = [
+import type { PortfolioItem } from "../types";
+
+export const projects: PortfolioItem[] = [
 	{
 		eyebrow: "Data investigation",
 		altText: 'Grey, blue and orange circles arranged in a circle.',

@@ -1,9 +1,16 @@
-<script>
+<script lang="ts">
+	import type { PortfolioItem } from '../types';
 	import { Center, Stack } from 'creditdesign-svelte-components';
 	import WebsiteIntro from '$lib/WebsiteIntro/index.svelte';
 	import ProjectsSection from '$lib/ProjectsSection/index.svelte';
 
-	export let data;
+	interface Props {
+		data: {
+			projects: PortfolioItem[];
+		}
+	}
+
+	let { data }: Props = $props();
 </script>
 
 <svelte:head>
