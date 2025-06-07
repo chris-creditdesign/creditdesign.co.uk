@@ -18,7 +18,7 @@
 			{#each projects as cardData, i}
 				{#if i % 4 === 0 || i % 4 === 3}
 					<li>
-						<CardSideImage
+						<CardSideImageBox
 							headerLevel="none"
 							headlineFontSize="big-1"
 							{cardData}
@@ -29,7 +29,7 @@
 					</li>
 				{:else}
 					<li>
-						<CardSideImageBox
+						<CardSideImage
 							headerLevel="none"
 							headlineFontSize="big-1"
 							{cardData}
