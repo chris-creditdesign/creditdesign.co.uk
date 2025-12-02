@@ -7,7 +7,6 @@
 
 	import CardHeader from '$lib/CardHeader/index.svelte';
 	import Image from '$lib/Image/index.svelte';
-	import { Stack } from 'creditdesign-svelte-components';
 
 	/**
 	 * - altText
@@ -34,7 +33,7 @@
 </script>
 
 <div class={`card ${className}`} data-theme={theme}>
-	<Stack {stackSpace}>
+	<div class="l-stack" style="--stack-space--component: {stackSpace};">
 		{#if srcURL}
 			<Image {altText} {caption} {srcURL} />
 		{/if}
@@ -74,5 +73,5 @@
 		{/if}
 
 		<slot />
-	</Stack>
+	</div>
 </div>

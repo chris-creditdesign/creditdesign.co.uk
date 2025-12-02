@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { PortfolioItem } from '../../types';
-	import { Stack, Grid } from 'creditdesign-svelte-components';
 	import CardSideImage from '$lib/CardSideImage/index.svelte';
 	import CardSideImageBox from '$lib/CardSideImageBox/index.svelte';
 
@@ -12,10 +11,13 @@
 </script>
 
 <div class="border-above border-below">
-	<Stack stackSpace="var(--s-1)">
+	<div class="l-stack" style="--stack-space--component: var(--s-1);">
 		<h2>Projects</h2>
 
-		<Grid gridSpace="var(--s4)" list={true}>
+		<ul
+			class="l-grid"
+			style="--grid-column-space--component: var(--s-4); --grid-min-width--component: var(--measure);"
+		>
 			{#each projects as cardData, i (i)}
 				{#if i % 4 === 0 || i % 4 === 3}
 					<li>
@@ -40,8 +42,8 @@
 					</li>
 				{/if}
 			{/each}
-		</Grid>
-	</Stack>
+		</ul>
+	</div>
 </div>
 
 <style>

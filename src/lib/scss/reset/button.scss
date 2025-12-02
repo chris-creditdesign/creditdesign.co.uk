@@ -1,0 +1,46 @@
+/* Buttons */
+/* TO CHECK */
+
+button:not([class]) {
+  display: flex;
+  gap: var(--s-2);
+  align-items: center;
+  width: fit-content;
+  padding: var(--s-3) var(--s-2);
+  font-size: inherit;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+}
+
+buttona:not([class]):disabled {
+	opacity: 0.5;
+}
+
+buttona:not([class]):not(:disabled) {
+  cursor: pointer;
+}
+
+buttona:not([class]):not(:disabled):hover,
+buttona:not([class]):not(:disabled):focus {
+  color: var(--color--link-active);
+  background-color: var(--color--outline);
+  border-color: var(--color--link-active);
+  outline: 3px solid var(--color--outline);
+  fill: var(--color--link-active);
+}
+
+buttona:not([class]):not(:disabled):active {
+  transform: translateY(0.5px);
+}
+
+buttona:not([class]):not(:disabled):active,
+buttona:not([class]):not(:disabled)[aria-expanded="true"] {
+  color: var(--color--button-expanded);
+  background-color: var(--color--button-background-expanded);
+  fill: var(--color--button-expanded);
+}
+
+@at-root .no-flexbox-gap button > * + * {
+  margin-left: var(--s-2);
+}

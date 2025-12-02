@@ -1,16 +1,12 @@
-<script lang="ts">
-	import { Stack, Sidebar } from 'creditdesign-svelte-components';
-</script>
-
-<Sidebar sidebarSpace="var(--s1)" sidebarContentMinWidth="50%">
-	<div slot="sidebar">
+<div class="l-sidebar" style="--sidebar-space--component: var(--s-1); --sidebar-content-min-width--component: 50%;">
+	<div class="l-sidebar__content">
 		<img
 			src="img/chris-ryan-guardian.jpg"
 			alt="Head and shoulders of Chris Ryan wearing a jacket stood outside looking towards the camera."
 		/>
 	</div>
-	<div slot="main-content">
-		<Stack stackSpace="var(--s-1)">
+	<div class="l-sidebar__main-content">
+		<div class="l-stack" style="--stack-space--component: var(--s-1);">
 			<h2>Hi, I'm Chris Ryan</h2>
 
 			<p>
@@ -34,9 +30,9 @@
 				<a href="https://codepen.io/chris-creditdesign">Codepen</a>
 				and <a href="https://observablehq.com/@chris-creditdesign">Observable</a>.
 			</p>
-		</Stack>
+		</div>
 	</div>
-</Sidebar>
+</div>
 
 <style>
 	img {

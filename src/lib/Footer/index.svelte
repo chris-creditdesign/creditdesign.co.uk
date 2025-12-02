@@ -1,5 +1,5 @@
 <footer
-	class="grid box center font-size:small"
+	class="l-grid box l-center font-size:small"
 	style="--center-measure--component: var(--measure-big); --grid-space--component: var(--s-1);"
 >
 	<p>

@@ -63,6 +63,7 @@
 
 	figure {
 		--image-caption-space--component: initial;
+		margin: 0;
 	}
 
 	img {

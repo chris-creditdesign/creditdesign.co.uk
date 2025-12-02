@@ -1,5 +1,4 @@
 <script>
-	import { Stack } from 'creditdesign-svelte-components';
 	import CardHeadline from '$lib/CardHeadline/index.svelte';
 
 	/**
@@ -22,7 +21,7 @@
 </script>
 
 <header>
-	<Stack stackSpace={cardHeaderStackSpace}>
+	<div class="l-stack" style="--stack-space--component: {cardHeaderStackSpace};">
 		{#if eyebrow}
 			<p class="eyebrow font-size:small font-family:sans-serif">
 				{@html eyebrow}
@@ -51,7 +50,7 @@
 				{@html subHead}
 			</p>
 		{/if}
-	</Stack>
+	</div>
 </header>
 
 <style>

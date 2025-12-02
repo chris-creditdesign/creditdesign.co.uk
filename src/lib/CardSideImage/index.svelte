@@ -1,5 +1,4 @@
 <script>
-	import { Sidebar, Stack } from 'creditdesign-svelte-components';
 	import Card from '$lib/Card/index.svelte';
 	import Image from '$lib/Image/index.svelte';
 
@@ -49,17 +48,12 @@
 
 <div class={`card--side-image ${className}`} data-theme={theme}>
 	{#if srcURL}
-		<Stack {stackSpace}>
-			<Sidebar
-				sidebarContentMinWidth={textMinWidth}
-				sidebarOnRight={!imageOnLeft}
-				{sidebarSpace}
-				sidebarWidth={imageWidth}
-			>
-				<div slot="sidebar">
+		<div class="l-stack" style="--stack-space--component: {sidebarSpace};">
+			<div class="l-sidebar" style="--sidebar-space--component: {sidebarSpace}; --sidebar-width--component: {imageWidth}; --sidebar-on-right--component: {imageOnLeft ? 'false' : 'true'}; --sidebar-content-min-width--component: {textMinWidth};">
+				<div class="l-sidebar__content">
 					<Image {altText} {caption} {srcURL} />
 				</div>
-				<div slot="main-content">
+				<div class="l-sidebar__main-content">
 					<Card
 						{cardHeaderStackSpace}
 						{headerLevel}
@@ -71,9 +65,8 @@
 						{theme}
 					/>
 				</div>
-			</Sidebar>
-			<slot />
-		</Stack>
+			</div>
+		</div>
 	{:else}
 		<Card
 			{cardData}

@@ -1,5 +1,4 @@
 <script>
-	import { Box } from 'creditdesign-svelte-components';
 	import CardSideImage from '$lib/CardSideImage/index.svelte';
 
 	export let boxSpace = 'var(--s-1)';
@@ -44,7 +43,8 @@
 </script>
 
 <div class={`card invert ${className}`} data-theme={theme}>
-	<Box {boxSpace}>
+	<!-- <Box {boxSpace}> -->
+	<div class="u-box" style="--box-space--component: {boxSpace};">
 		<CardSideImage
 			{cardData}
 			{cardHeaderStackSpace}
@@ -61,5 +61,6 @@
 		>
 			<slot />
 		</CardSideImage>
-	</Box>
+	</div>
+	<!-- </Box> -->
 </div>
