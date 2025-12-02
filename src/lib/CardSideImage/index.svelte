@@ -49,7 +49,12 @@
 <div class={`card--side-image ${className}`} data-theme={theme}>
 	{#if srcURL}
 		<div class="l-stack" style="--stack-space--component: {sidebarSpace};">
-			<div class="l-sidebar" style="--sidebar-space--component: {sidebarSpace}; --sidebar-width--component: {imageWidth}; --sidebar-on-right--component: {imageOnLeft ? 'false' : 'true'}; --sidebar-content-min-width--component: {textMinWidth};">
+			<div
+				class="l-sidebar"
+				style="--sidebar-space--component: {sidebarSpace}; --sidebar-width--component: {imageWidth}; --sidebar-on-right--component: {imageOnLeft
+					? 'false'
+					: 'true'}; --sidebar-content-min-width--component: {textMinWidth};"
+			>
 				<div class="l-sidebar__content">
 					<Image {altText} {caption} {srcURL} />
 				</div>
