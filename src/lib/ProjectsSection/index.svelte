@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { PortfolioItem } from '../../types';
 	import { Stack, Grid } from 'creditdesign-svelte-components';
-	import { CardSideImage, CardSideImageBox } from 'nature-immersive-svelte-components';
+	import CardSideImage from '$lib/CardSideImage/index.svelte';
+	import CardSideImageBox from '$lib/CardSideImageBox/index.svelte';
 
 	interface Props {
 		projects: PortfolioItem[];
@@ -15,7 +16,7 @@
 		<h2>Projects</h2>
 
 		<Grid gridSpace="var(--s4)" list={true}>
-			{#each projects as cardData, i}
+			{#each projects as cardData, i (i)}
 				{#if i % 4 === 0 || i % 4 === 3}
 					<li>
 						<CardSideImageBox

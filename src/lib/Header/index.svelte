@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CoverBackgroundVideo } from 'nature-immersive-svelte-components';
+	import CoverBackgroundVideo from '$lib/CoverBackgroundVideo/index.svelte';
 </script>
 
 <header>
