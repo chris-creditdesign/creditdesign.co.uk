@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PortfolioItem } from '../types';
+	import Header from '$lib/Header/index.svelte';
 	import WebsiteIntro from '$lib/WebsiteIntro/index.svelte';
 	import ProjectsSection from '$lib/ProjectsSection/index.svelte';
 
@@ -15,6 +16,8 @@
 <svelte:head>
 	<title>Chris Ryan</title>
 </svelte:head>
+
+<Header />
 
 <main>
 	<div class="l-stack" style="--stack-space--component: var(--s-3);">

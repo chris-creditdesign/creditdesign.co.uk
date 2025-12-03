@@ -31,3 +31,14 @@
 @include sidebar.styles;
 @include stack.styles;
 @include switcher.styles;
+
+.b-main {
+  // Extra large space above
+  h2 {
+    --flow-space: var(--s4);
+  }
+
+  h3 {
+    --flow-space: var(--s2);
+  }
+}
