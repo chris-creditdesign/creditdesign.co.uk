@@ -63,9 +63,9 @@
 		dialogContext.isCorrect = topOneNodes.map((d) => d.id).toString() === correctAnswer.toString();
 
 		if (dialogContext.isCorrect) {
-			dialogContext.message = 'You have selected the correct answer!';
+			dialogContext.message = `That's right, the correct answer is B!`;
 		} else {
-			dialogContext.message = 'You have selected the wrong answer.';
+			dialogContext.message = `I'm afraid ${topOneNodes.map((d) => d.name).toString()} is the wrong answer.`;
 		}
 
 		dialogContext.isOpen = true;

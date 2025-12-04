@@ -19,8 +19,6 @@
 			.slice(0, 5)
 			.toString();
 
-		console.log(answer);
-
 		if (answer === 'H,I,J,K,L') {
 			dialogContext.isCorrect = true;
 		} else {
@@ -29,6 +27,12 @@
 
 		dialogContext.message = 'You have selected the correct answer!';
 		dialogContext.isOpen = true;
+
+		if (dialogContext.isCorrect) {
+			dialogContext.message = `Well done! The correct order is ${answer}!`;
+		} else {
+			dialogContext.message = `I'm afraid ${answer} is the wrong order.`;
+		}
 	};
 
 	const handleNetworkNodeClick = (nodeId: number) => {
