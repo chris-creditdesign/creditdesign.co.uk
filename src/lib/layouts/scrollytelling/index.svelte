@@ -1,7 +1,13 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { Step } from '$lib/types';
 	import { onMount } from 'svelte';
+
+	type Step = {
+		step: {
+			type: string;
+			value: string;
+		}[];
+	};
 
 	interface Props {
 		steps: Step[];
@@ -24,7 +30,7 @@
 		let observer: IntersectionObserver;
 		let rendered_steps: Element[] = [];
 
-		if (stepContainer && window.innerWidth > 600) {
+		if (stepContainer) {
 			mounted = true;
 			rendered_steps = Array.from(stepContainer.querySelectorAll('.step'));
 
@@ -80,19 +86,27 @@
 	}
 
 	.background-container {
-		grid-column-start: 2;
+		grid-column-start: 1;
 		grid-column-end: 3;
 		grid-row-start: 1;
 		grid-row-end: 2;
 		z-index: -999;
 	}
 
+	.background {
+		position: sticky;
+		top: 0;
+		left: 0;
+		min-height: 100vh;
+	}
+
 	.steps {
 		grid-column-start: 1;
-		grid-column-end: 2;
+		grid-column-end: 3;
 		grid-row-start: 1;
 		grid-row-end: 2;
 		padding: 0;
+		margin-block: 50vh;
 	}
 
 	.step {
@@ -100,28 +114,31 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		margin-block: 25vh;
+		background-color: var(--color-background);
+		border-radius: var(--s0);
+		padding: var(--s0);
 	}
 
 	@media (min-width: 650px) {
-		.background {
-			position: sticky;
-			top: 0;
-			left: 0;
-			min-height: 100vh;
+		.background-container {
+			grid-column-start: 2;
+			grid-column-end: 3;
 		}
 
 		.steps {
+			grid-column-start: 1;
+			grid-column-end: 2;
 			margin: 0 0 50vh 0;
 		}
 
 		.step {
-			margin: 0;
 			min-height: 25vh;
+			margin: 0;
 		}
 
 		.step:first-of-type {
 			margin-block-start: 50vh;
 		}
-
 	}
 </style>
