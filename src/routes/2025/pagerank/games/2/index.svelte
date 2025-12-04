@@ -86,7 +86,7 @@
 <svelte:window onkeydown={groupContext.handleWindowKeydown} />
 
 <div class="l-stack">
-	<p class="font-weight:bold">Page rank scores:</p>
+	<p class="u-text-align:center u-font-weight:bold">Put the websites in order of PageRank score</p>
 
 	<PageRankScores
 		nodes={topFourNodes}

@@ -6,7 +6,9 @@
 	import Scrollytelling_2 from './scrollytelling/2/index.svelte';
 </script>
 
-<h1 class="u-text-align:center">How Google is a bit like The Traitors and why you should care</h1>
+<div class="l-flow u-column u-padding-block" style="--column-width--component: 100ch; --padding-block: var(--s2);">
+<h1 class="u-text-align:center">How Google is a bit like <em>The Traitors</em> and why you should care</h1>
+</div>
 
 <div class="l-flow u-column" style="--column-width--component: var(--measure);">
 
@@ -14,11 +16,23 @@ Each time you scroll through a social media app or do a Google search, there's a
 
 These algorithms decide what you see and perhaps more importantly, who sees you.
 
-But how do they work? 
+## How do these algorithms work?
 
-## The Traitors
+Put yourself in Google's shoes for a moment... lets say someone searches for the word 'frog'. We can check the entire internet and find every website that contains the word 'frog' but that would probably be hundreds of thousands of websites. How do we narrow down the selection?
 
-To get a better understanding, let's imagine a game of The Traitors. With the proviso that I've never seen The Traitors, and don't really understand how it works.
+Perhaps we could pick only websites that have the word 'frog' in the title? Or only websites that contain big pictures of frogs?
+
+To answer this question, Google co-founders Larry Page and Sergey Brin developed the PageRank algorithm. 
+
+This algorithm ranks each page based on the number and 'quality' of links pointing to it from other websites.
+
+Essentially, each link is treated as a 'vote'. The site with the most votes wins.
+
+## _The Traitors_
+
+To get a better understanding, let's imagine a modified game of _The Traitors_. In this game the players cannot lie and we're only interested in determining who is mathematically most likely to be the traitor based on the accusations.
+
+There are only four players and they are each represented by pink circles. Let's say, imaginatively, that their names are A, B, C and D.
 
 </div>
 
@@ -34,13 +48,9 @@ To get a better understanding, let's imagine a game of The Traitors. With the pr
 
 ## Who is the traitor?
 
-So, from a purely mathematical point of view, can we determine who is most likely to be the traitor?
+Can you determine who is most likely to be the traitor, from a purely mathematical point of view?
 
-We're assuming that no one is lying, so this metaphor doesn't really hold up, but please bear with me.
-
-### Pick the traitor
-
-Use the diagram below to click on the person that you suspect to be the traitor. Click on the circle in the diagram so that you person you suspect is added to the guilty looking box. If you change your mind, simply click on them again to remove them from the box.
+Use the diagram below to click on the person that you suspect to be the traitor. Click on the circle in the diagram to add the person you suspect to the Box of Guilt. If you change your mind, simply click on them again to remove them.
 
 Once you've made your selection you can click on the 'check answer' button to see if you're right.
 
@@ -48,71 +58,62 @@ Once you've made your selection you can click on the 'check answer' button to se
 	<Game_1 />
 </div>
 
-A, B and D have two nominations, C only has one. So C is the least likely to be the traitor.
+### How did you do?
 
-A, B and D each each been accused by two people. Very suspicious! 
+A, B and D each each been accused by two people. Very suspicious! They are our top candidates.
 
-Looking more closely, A accuses B. That is the only person they accuse.
-
-B, C and D accuse two people each.
+Looking more closely, B, C and D accuse two people each. However A only accuses B.
 
 Let's say that each person can give out one accusation point, worth a score of 1.
 
-If a person accuses just one other, they gives all of their accusation score to that person.
+If a person accuses just one other, they give all of their accusation score to that person.
 
-If they accuses two people, each person receives half an accusation point.
+If they accuses two people, each of the accused will receive half an accusation point.
 
-So A has given their entire accusation point to B, which is a more powerful accusation.
+So A has given their entire accusation point to B whilst D has also given half an accusation point to B.
 
-## What has this got to do with the internet?
-
-If we squint our eyes, this simplified game of The Traitors is a little bit like the OG recommendation algorithm, Google's PageRank.
-
-PageRank was developed by Google co-founders Larry Page and Sergey Brin. It was a groundbreaking idea that revolutionized how search engines should decide which results to show.
-
-Lets say someone Google's the word 'frog'. We can check the entire internet and make a list of every website that contains the word 'frog'. That will probably be hundreds of thousands of websites.
-
-We can't show all of the websites to the reader all at once, that would be overwhelming and their screen probably isn't big enough for a hundred thousands links.
-
-It's probably better if we just show them ten results. But how do we pick that top ten? And which website should be number one?
-
-Perhaps we could pick only websites that have the word 'frog' in the title? Or the websites that repeat the word 'frog' the most times? Or only websites that contain big pictures of frogs?
-
-The PageRank algorithm does something different. It ranks each page based on the number and 'quality' of links from other website pointing to it. 
-
-Essentially, each link is treated as a 'vote'. The site with the most votes wins.
-
-Which is a little bit like our game of The Traitors, if we assume that the players are websites and instead of accusations, they are linking to each other. Which is much more wholesome.
+We can say B has 1.5 accusation points, where as A and D only have 1. Making B our traitor!
 
 ## Quality links
+
+From now on we'll stop thinking about traitors and think about websites instead. Instead of accusing each other, the websites will link to each other.
 
 The algorithm assumes that the more important a website is, the more likely it is to receive links from other websites.
 
 But there is a problem with assuming that the page with the most incoming links is automatically the most important.
 
-It's possible to game the system. A nasty person could simply launch hundreds of pointless websites, all linking to their main site just to make that site appear to be more important.
+It's possible to game the system. A nefarious person could simply create hundreds of other websites, all linking to their main site just to make that site appear to be more important.
 
-Let's say than B now also links to A.
+
+### Pick the most popular website
+
+Let's take another look at our diagram and say than B now also links to A.
+
+Can you click on the websites so that they are added to the box in order of importance, that is order of their PageRank score?
+
+Once again you can click on a circle to add them to the box, then click on them again if you'd like to remove them. Click on the click on the ‘check answer’ button once you've made your selection.
 
 <div style="--flow-space: var(--s2);">
 	<Game_2 />
 </div>
 
-A now surpasses D in rank because it has a new recommendation.
+### How did you do?
 
-However, more interestingly, A now has three incoming links, more than any other site, and yet site B is still ranked higher.
+This might have been slightly tricky. Congratulations if you got it in one and no worries if you're still figuring it out.
 
-Site A only endorses one other site, site B. So it gives all of it's importance point to B.
+Site A now has three incoming links, more than any other site, and yet site B is still ranked in first place. Why is that?
 
-Site B links to three sites, so it can only give a third of an importance point to Site A.
+To stop websites gaming the system, not all links are treated equally. The algorithm assigns more weight to links coming from websites that already have a high PageRank score. It's not just about the number of links, it's about the quality or 'weight' of those links.
 
-It's not just about the number of links, it's about the quality of those links. I other words, a page is more 'important', the more it is linked to by 'important' pages.
+<!-- In other words, a page becomes more 'important', the more it is linked to by 'important' pages. -->
 
-If a big, respected site like the BBC or the New York Times links to you, that will mean much more to your PageRank score than a link from my personal blog about ginger cats.
+If a big, respected site like the _BBC_ or the _New York Times_ links to you, that will mean much more to your PageRank score than a link from my personal blog about ginger cats.
+
+Because site A is a high ranking site, its link to site B is enough to push B to the top spot even though B technically has less incoming links.
 
 ## How does PageRank decide who is best
 
-PageRank uses a technique called the a __Random Surfer__. This is more than just an erratic water sports enthusiast. The Random Surfer represents an average internet user randomly clicking links on the web. 
+PageRank uses a technique called the a Random Surfer. This is more than just an erratic water sports enthusiast. The Random Surfer is a computer programme that acts like an internet user who has decided to surf the web by randomly clicking on links. 
 
 </div>
 
@@ -129,9 +130,9 @@ PageRank uses a technique called the a __Random Surfer__. This is more than just
 
 After a long while, these percentages will start to stabilize. Meaning that even if the Random Surfer carries on surfing the percentages won't change much, if at all.
 
-At this point, we can stop the algorithm running, let the Random Surfer go and use these percentages to rank the websites by importance.
+At this point, we can stop the Random Surfer and use these percentages to rank the websites by importance.
 
-Doing this is real life would take a long time and possibly result in a severe case of RSI. But luckily this process can be simulated inside Google's super computers, meaning that the whole internet can be ranked according to every conceivable search term in no time at all.
+Doing this is real life would take a long time and possibly result in a severe case of RSI. But luckily this process can be simulated inside Google's super computers, meaning that the whole internet can be ranked in no time at all.
 
 ## Let's try that out
 

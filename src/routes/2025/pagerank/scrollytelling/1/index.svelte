@@ -17,11 +17,7 @@
 			step: [
 				{
 					type: 'text',
-					value: "It's <em>The Banishment Ceremony</em>, there are only four players left."
-				},
-				{
-					type: 'text',
-					value: "Let's say, imaginatively, that their names are A, B, C and D."
+					value: "It's <em>The Banishment Ceremony</em>."
 				},
 				{
 					type: 'text',
@@ -41,7 +37,7 @@
 			step: [
 				{
 					type: 'text',
-					value: "Let's say A picks B."
+					value: "In this diagram, a black arrow represents an accusation. Let's say A accuses B..."
 				}
 			]
 		},
@@ -49,7 +45,7 @@
 			step: [
 				{
 					type: 'text',
-					value: 'B picks C and D.'
+					value: 'B accuses C and D...'
 				}
 			]
 		},
@@ -57,7 +53,7 @@
 			step: [
 				{
 					type: 'text',
-					value: 'C picks A and D.'
+					value: 'C accuses A and D...'
 				}
 			]
 		},
@@ -65,7 +61,7 @@
 			step: [
 				{
 					type: 'text',
-					value: 'D picks A and B.'
+					value: 'and finally D accuses A and B.'
 				}
 			]
 		}
@@ -116,6 +112,7 @@
 <ScrollyTelling {steps} bind:intersectingStep>
 	<div class="flex-container">
 		<div class="network-container">
+			<p class="u-text-align:center u-font-weight:bold">The Banishment Ceremony</p>
 			<Network {key} />
 		</div>
 	</div>

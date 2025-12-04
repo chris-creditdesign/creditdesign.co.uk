@@ -47,7 +47,7 @@
 				{
 					type: 'text',
 					value:
-						"Let's try that out. Our Random Surfer starts their random journey through the internet by picking a website to start with. How do they pick that website, you guessed it, randomly"
+						"Let's try that out. Our Random Surfer, represented by the ugly red circle, starts their random journey through the internet by picking a website to start with. How do they pick that website, you guessed it, randomly"
 				}
 			]
 		},
@@ -56,7 +56,7 @@
 				{
 					type: 'text',
 					value:
-						"As the Random Surfer moves through the simplified and probably very boring internet with just four websites, we'll keep count of how many times they visit each page"
+						"As the Random Surfer moves through the internet, we'll keep count of how many times they visit each page"
 				}
 			]
 		},
@@ -181,6 +181,7 @@
 	<div class="flex-container">
 		<div class="network-container">
 			<div class="l-stack">
+		 		<p class="u-text-align:center u-font-weight:bold">Number of visits from the Random Surfer</p>
 				<PageRankScores
 					nodes={nodesWithScores}
 					radius={groupContext.radius / 2}

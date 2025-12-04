@@ -73,7 +73,7 @@
 <svelte:window onkeydown={groupContext.handleWindowKeydown} />
 
 <div class="l-stack">
-	<p>Page Rank Scores:</p>
+	<p class="u-text-align:center u-font-weight:bold">Add links to place the websites in the order H,I,J,K and L</p>
 
 	<PageRankScores
 		nodes={groupContext.enhancedNodes.sort((a, b) => b.score - a.score).slice(0, 5)}
