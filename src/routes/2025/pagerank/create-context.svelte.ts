@@ -14,7 +14,6 @@ class GroupContext {
 
 	// CONSTANTS
 	paddingAmount = 0.03; // 3% padding
-	radius = 30;
 	// distance to push the arrow past the target center (radius + padding)
 	arrowPadding = 4;
 	// minimum distance to drag before starting drag operation (prevents accidental drags)
@@ -48,6 +47,7 @@ class GroupContext {
 	});
 
 	// DERRIVED
+	radius = $derived(this.containerWidth < 600 ? 25 : 30);
 	padding = $derived(
 		{
 			top: this.containerWidth * this.paddingAmount,
