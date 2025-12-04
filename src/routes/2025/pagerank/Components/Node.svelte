@@ -63,9 +63,9 @@
 			const targetId = nodeButton ? parseInt(nodeButton.getAttribute('data-node-id') || '', 10) : null;
 			
 			// Update mouse enter/leave for target highlighting during drag
-			if (targetId && targetId !== id && onMouseEnter) {
+			if (targetId !== null && targetId !== id && onMouseEnter) {
 				onMouseEnter(targetId);
-			} else if (!targetId && onMouseLeave) {
+			} else if (targetId === null && onMouseLeave) {
 				onMouseLeave();
 			}
 		}
