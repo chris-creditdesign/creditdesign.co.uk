@@ -22,37 +22,45 @@
 	const groupContext = setGroupContext(key, { nodes, edges });
 	const dialogContext = getDialogContext();
 
-	let topFourNodes: EnhancedNode[] = $state([]);
+	let topOneNodes: EnhancedNode[] = $state([]);
 	let correctAnswer = $derived(
 		groupContext.enhancedNodes
 			.sort((a, b) => b.score - a.score)
 			.map((d) => d.id)
-			.slice(0, 4)
+			.slice(0, 1)
 	);
 
 	const handlePageRankScoresNodeClick = (nodeId: number) => {
-		const topFiveIndex = topFourNodes.findIndex((n) => n.id === nodeId);
+		const topFiveIndex = topOneNodes.findIndex((n) => n.id === nodeId);
 		if (topFiveIndex > -1) {
-			topFourNodes.splice(topFiveIndex, 1);
+			topOneNodes.splice(topFiveIndex, 1);
 		}
 	};
 
 	const handleNetworkNodeClick = (nodeId: number) => {
 		const node = groupContext.enhancedNodes.find((n) => n.id === nodeId);
-		const topFiveIndex = topFourNodes.findIndex((n) => n.id === nodeId);
-		if (node && topFourNodes.length < 5 && topFiveIndex === -1) {
-			topFourNodes.push(node);
+		const topOneIndex = topOneNodes.findIndex((n) => n.id === nodeId);
+		if (node && topOneNodes.length < 1 && topOneIndex === -1) {
+			// If the node is not already selected and we have space, add it
+			topOneNodes.push(node);
 			groupContext.plusNodeId = null;
 			groupContext.minusNodeId = nodeId;
-		} else if (topFiveIndex > -1) {
-			topFourNodes.splice(topFiveIndex, 1);
+		} else if (node && topOneNodes.length >= 1 && topOneIndex === -1) {
+			// If we have no space, remove the existing node and add the new one
+			topOneNodes.splice(0, 1, node!);
+			groupContext.plusNodeId = null;
+			groupContext.minusNodeId = nodeId;
+			return;
+		} else if (topOneIndex > -1) {
+			// If the node is already selected, remove it
+			topOneNodes.splice(topOneIndex, 1);
 			groupContext.plusNodeId = nodeId;
 			groupContext.minusNodeId = null;
 		}
 	};
 
 	const handleCheckAnswerClick = () => {
-		dialogContext.isCorrect = topFourNodes.map((d) => d.id).toString() === correctAnswer.toString();
+		dialogContext.isCorrect = topOneNodes.map((d) => d.id).toString() === correctAnswer.toString();
 
 		if (dialogContext.isCorrect) {
 			dialogContext.message = 'You have selected the correct answer!';
@@ -64,12 +72,12 @@
 	};
 
 	const handleResetTop5Nodes = () => {
-		topFourNodes = [];
+		topOneNodes = [];
 	};
 
 	const handleNetworkNodeMouseEnter = (nodeId: number) => {
-		const topFiveIndex = topFourNodes.findIndex((n) => n.id === nodeId);
-		if (topFourNodes.length < 5 && topFiveIndex === -1) {
+		const topFiveIndex = topOneNodes.findIndex((n) => n.id === nodeId);
+		if (topOneNodes.length < 1 && topFiveIndex === -1) {
 			groupContext.plusNodeId = nodeId;
 		} else if (topFiveIndex > -1) {
 			groupContext.minusNodeId = nodeId;
@@ -85,8 +93,10 @@
 <svelte:window onkeydown={groupContext.handleWindowKeydown} />
 
 <div class="l-stack">
+	<p class="u-text-align:center u-font-weight:bold">The Box of Guilt</p>
+
 	<PageRankScores
-		nodes={topFourNodes}
+		nodes={topOneNodes}
 		radius={groupContext.radius / 2}
 		showScores={false}
 		onNodeClick={handlePageRankScoresNodeClick}
