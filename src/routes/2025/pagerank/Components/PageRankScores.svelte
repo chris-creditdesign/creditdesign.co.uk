@@ -42,7 +42,7 @@
 
 <style>
 	ul {
-		min-height: 6em;
+		min-height: 6.5em;
 		border: 4px solid black;
 		border-radius: var(--s0);
 		padding: var(--s0);
