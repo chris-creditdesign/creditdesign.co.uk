@@ -1,7 +1,7 @@
 /* Buttons */
 /* TO CHECK */
 
-button:not([class]) {
+button {
   display: flex;
   gap: var(--s-2);
   align-items: center;
@@ -10,35 +10,36 @@ button:not([class]) {
   font-size: inherit;
   border-style: solid;
   border-width: 1px;
+  background-color: var(--color-background);
   cursor: pointer;
 }
 
-buttona:not([class]):disabled {
+button:disabled {
 	opacity: 0.5;
 }
 
-buttona:not([class]):not(:disabled) {
+button:not(:disabled) {
   cursor: pointer;
 }
 
-buttona:not([class]):not(:disabled):hover,
-buttona:not([class]):not(:disabled):focus {
-  color: var(--color--link-active);
-  background-color: var(--color--outline);
-  border-color: var(--color--link-active);
-  outline: 3px solid var(--color--outline);
-  fill: var(--color--link-active);
+button:not(:disabled):hover,
+button:not(:disabled):focus-visible {
+  color: var(--color-link-active);
+  background-color: var(--color-outline);
+  border-color: var(--color-link-active);
+  outline: 3px solid var(--color-outline);
+  fill: var(--color-link-active);
 }
 
-buttona:not([class]):not(:disabled):active {
+button:not(:disabled):active {
   transform: translateY(0.5px);
 }
 
-buttona:not([class]):not(:disabled):active,
-buttona:not([class]):not(:disabled)[aria-expanded="true"] {
-  color: var(--color--button-expanded);
-  background-color: var(--color--button-background-expanded);
-  fill: var(--color--button-expanded);
+button:not(:disabled):active,
+button:not(:disabled)[aria-expanded="true"] {
+  color: var(--color-button-expanded);
+  background-color: var(--color-button-background-expanded);
+  fill: var(--color-button-expanded);
 }
 
 @at-root .no-flexbox-gap button > * + * {
