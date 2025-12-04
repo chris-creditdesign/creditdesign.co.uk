@@ -26,6 +26,10 @@
 </footer>
 
 <style>
+	footer {
+		margin-block: var(--s4);
+	}
+
 	p {
 		margin: 0;
 	}
