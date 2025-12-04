@@ -18,7 +18,8 @@ class GroupContext {
 	// distance to push the arrow past the target center (radius + padding)
 	arrowPadding = 4;
 	// minimum distance to drag before starting drag operation (prevents accidental drags)
-	dragThreshold = 8;
+	// Lower threshold for touch devices to make dragging easier
+	dragThreshold = 6;
 
 	// STATE
 	nodes: Node[] = $state([]);
@@ -152,20 +153,30 @@ class GroupContext {
 
 			this.pointerX = offsetX - this.padding.left;
 			this.pointerY = offsetY - this.padding.top;
+			
+			// Ensure mouseOverContainer is true when we're getting pointer moves
+			this.mouseOverContainer = true;
 		}
 	};
 
 	handleContainerClick = (event: MouseEvent) => {
 		if ((event.target as Element)?.nodeName !== 'BUTTON') {
+			// Reset all interaction state when clicking empty space
 			this.activeNodeId = null;
 			this.targetNodeId = null;
+			this.plusNodeId = null;
+			this.minusNodeId = null;
+			// Also cancel any ongoing drag
+			if (this.isDragging || this.dragStartNodeId !== null) {
+				this.cancelDrag();
+			}
 		}
 	};
 
 	handleWindowKeydown = (event: KeyboardEvent) => {
 		if (event.key === 'Escape') {
-			this.activeNodeId = null;
-			this.targetNodeId = null;
+			// Cancel all interactions on escape
+			this.cancelDrag();
 		}
 	};
 
@@ -201,17 +212,26 @@ class GroupContext {
 		const wasDragging = this.isDragging;
 		const sourceNodeId = this.dragStartNodeId;
 
-		// Reset drag state
+		// Reset ALL drag and pointer state
 		this.isDragging = false;
 		this.dragStartNodeId = null;
 		this.dragStartTime = 0;
 		this.dragStartX = 0;
 		this.dragStartY = 0;
+		
+		// Also ensure active/target states are reset if this was a drag
+		if (wasDragging) {
+			this.activeNodeId = null;
+			this.targetNodeId = null;
+			// For touch devices, also reset mouse state to prevent stale pointer arrows
+			this.mouseOverContainer = false;
+		}
 
 		return { wasDragging, sourceNodeId };
 	};
 
 	cancelDrag = () => {
+		// Reset ALL drag and pointer state completely
 		this.isDragging = false;
 		this.dragStartNodeId = null;
 		this.dragStartTime = 0;
@@ -219,6 +239,14 @@ class GroupContext {
 		this.dragStartY = 0;
 		this.activeNodeId = null;
 		this.targetNodeId = null;
+		this.plusNodeId = null;
+		this.minusNodeId = null;
+	};
+
+	// Force complete reset of all interaction state
+	resetInteractionState = () => {
+		this.cancelDrag();
+		// Ensure we're in a completely clean state
 	};
 }
 

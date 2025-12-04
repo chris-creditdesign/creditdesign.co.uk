@@ -32,6 +32,7 @@
 
 	const handlePointerDown = (event: PointerEvent) => {
 		event.preventDefault();
+		event.stopPropagation(); // Prevent scrolling on touch devices
 		
 		// Start potential drag
 		const x = event.clientX;
@@ -50,6 +51,7 @@
 		if (!isDragActive) return;
 		
 		event.preventDefault();
+		event.stopPropagation(); // Prevent scrolling on touch devices
 		const x = event.clientX;
 		const y = event.clientY;
 		
@@ -75,12 +77,13 @@
 		if (!isDragActive) return;
 		
 		event.preventDefault();
+		event.stopPropagation(); // Prevent scrolling on touch devices
 		
 		// Check if we actually dragged (moved beyond threshold)
 		const deltaX = event.clientX - dragStartPos.x;
 		const deltaY = event.clientY - dragStartPos.y;
 		const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-		const actuallyDragged = distance > 8; // Use same threshold as context
+		const actuallyDragged = distance > 6; // Use same threshold as context (touch-friendly)
 		
 		isDragActive = false;
 		
@@ -105,7 +108,11 @@
 		}
 		
 		// Release pointer capture
-		(event.target as HTMLElement).releasePointerCapture(event.pointerId);
+		try {
+			(event.target as HTMLElement).releasePointerCapture(event.pointerId);
+		} catch (e) {
+			// Ignore errors if pointer capture was already released
+		}
 	};
 
 	// Track if this was a drag operation to prevent click after drag
@@ -130,7 +137,7 @@
 	onpointerdown={handlePointerDown}
 	onpointermove={handlePointerMove}
 	onpointerup={handlePointerUp}
-	style="touch-action: none;"
+
 >
 	{name}
 </button>
@@ -139,6 +146,9 @@
 	button {
 		width: calc(var(--radius) * 2px);
 		height: calc(var(--radius) * 2px);
+		/* Ensure minimum 44px touch target for accessibility */
+		min-width: 44px;
+		min-height: 44px;
 		cursor: pointer;
 		display: flex;
 		align-items: center;
@@ -152,6 +162,11 @@
 		transition:
 			scale 0.3s ease,
 			transform 0.3s ease;
+		/* Touch-friendly properties */
+		-webkit-tap-highlight-color: transparent;
+		touch-action: none;
+		user-select: none;
+		-webkit-user-select: none;
 
 		&:hover {
 			scale: 1.2;

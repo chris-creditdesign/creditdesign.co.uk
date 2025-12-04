@@ -92,12 +92,16 @@
 			} else {
 				groupContext.edges = [...groupContext.edges, { id, source, target }];
 			}
-			
-			// Only clean up state if it was actually a drag operation
+		}
+		
+		// Always ensure clean state after any drag interaction (successful or not)
+		// This is critical for subsequent drag operations to work properly
+		if (wasDragging) {
 			groupContext.activeNodeId = null;
 			groupContext.targetNodeId = null;
+			groupContext.plusNodeId = null;
+			groupContext.minusNodeId = null;
 		}
-		// If it wasn't a drag, leave the state alone so clicks can work normally
 	};
 </script>
 
