@@ -13,9 +13,12 @@
 		onNodeClick?: (nodeId: number) => void;
 		onNodeMouseEnter?: (nodeId: number) => void;
 		onNodeMouseLeave?: () => void;
+		onNodeDragStart?: (nodeId: number, x: number, y: number) => void;
+		onNodeDrag?: (x: number, y: number) => boolean;
+		onNodeDragEnd?: (targetNodeId: number | null) => void;
 	};
 
-	let { key, onNodeClick, onNodeMouseEnter, onNodeMouseLeave }: Props = $props();
+	let { key, onNodeClick, onNodeMouseEnter, onNodeMouseLeave, onNodeDragStart, onNodeDrag, onNodeDragEnd }: Props = $props();
 
 	const groupContext = getGroupContext(key);
 </script>
@@ -46,6 +49,9 @@
 				onClick={(id) => onNodeClick && onNodeClick(id)}
 				onMouseEnter={(id) => onNodeMouseEnter && onNodeMouseEnter(id)}
 				onMouseLeave={() => onNodeMouseLeave && onNodeMouseLeave()}
+				onDragStart={(id, x, y) => onNodeDragStart && onNodeDragStart(id, x, y)}
+				onDrag={(x, y) => (onNodeDrag && onNodeDrag(x, y)) || false}
+				onDragEnd={(targetId) => onNodeDragEnd && onNodeDragEnd(targetId)}
 				classValue="e-position-absolute"
 				--top={node.cy}
 				--left={node.cx}

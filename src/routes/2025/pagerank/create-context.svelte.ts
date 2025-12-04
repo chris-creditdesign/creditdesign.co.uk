@@ -17,6 +17,8 @@ class GroupContext {
 	radius = 30;
 	// distance to push the arrow past the target center (radius + padding)
 	arrowPadding = 4;
+	// minimum distance to drag before starting drag operation (prevents accidental drags)
+	dragThreshold = 8;
 
 	// STATE
 	nodes: Node[] = $state([]);
@@ -32,6 +34,12 @@ class GroupContext {
 	pointerY = $state(0);
 	mouseOverContainer = $state(true);
 	containerElement: HTMLElement | null = $state(null);
+	// Drag state
+	isDragging = $state(false);
+	dragStartNodeId: null | number = $state(null);
+	dragStartTime = $state(0);
+	dragStartX = $state(0);
+	dragStartY = $state(0);
 	randomSurfer = $state({
 		visible: false,
 		cx: 0,
@@ -163,6 +171,54 @@ class GroupContext {
 
 	resetGraph = () => {
 		this.edges = [...this.starterEdges];
+	};
+
+	// Drag methods
+	startDrag = (nodeId: number, x: number, y: number) => {
+		this.dragStartNodeId = nodeId;
+		this.dragStartTime = Date.now();
+		this.dragStartX = x;
+		this.dragStartY = y;
+		this.isDragging = false; // Will become true once threshold is exceeded
+	};
+
+	updateDrag = (x: number, y: number) => {
+		if (this.dragStartNodeId === null) return false;
+
+		const deltaX = x - this.dragStartX;
+		const deltaY = y - this.dragStartY;
+		const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+		if (!this.isDragging && distance > this.dragThreshold) {
+			this.isDragging = true;
+			this.activeNodeId = this.dragStartNodeId;
+		}
+
+		return this.isDragging;
+	};
+
+	endDrag = (targetNodeId: number | null) => {
+		const wasDragging = this.isDragging;
+		const sourceNodeId = this.dragStartNodeId;
+
+		// Reset drag state
+		this.isDragging = false;
+		this.dragStartNodeId = null;
+		this.dragStartTime = 0;
+		this.dragStartX = 0;
+		this.dragStartY = 0;
+
+		return { wasDragging, sourceNodeId };
+	};
+
+	cancelDrag = () => {
+		this.isDragging = false;
+		this.dragStartNodeId = null;
+		this.dragStartTime = 0;
+		this.dragStartX = 0;
+		this.dragStartY = 0;
+		this.activeNodeId = null;
+		this.targetNodeId = null;
 	};
 }
 

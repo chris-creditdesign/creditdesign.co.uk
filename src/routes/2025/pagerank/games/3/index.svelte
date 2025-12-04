@@ -68,12 +68,45 @@
 	const handleNodeMouseLeave = () => {
 		groupContext.targetNodeId = null;
 	};
+
+	const handleNodeDragStart = (nodeId: number, x: number, y: number) => {
+		groupContext.startDrag(nodeId, x, y);
+	};
+
+	const handleNodeDrag = (x: number, y: number) => {
+		return groupContext.updateDrag(x, y);
+	};
+
+	const handleNodeDragEnd = (targetNodeId: number | null) => {
+		const { wasDragging, sourceNodeId } = groupContext.endDrag(targetNodeId);
+		
+		// If it was actually a drag operation (not just a click), create/remove edge
+		if (wasDragging && sourceNodeId !== null && targetNodeId !== null && sourceNodeId !== targetNodeId) {
+			const source = sourceNodeId;
+			const target = targetNodeId;
+			const id = `${source}-${target}`;
+			const id_array = groupContext.edges.map((e) => e.id);
+
+			if (id_array.includes(id)) {
+				groupContext.edges = groupContext.edges.filter((e) => e.id !== id);
+			} else {
+				groupContext.edges = [...groupContext.edges, { id, source, target }];
+			}
+			
+			// Only clean up state if it was actually a drag operation
+			groupContext.activeNodeId = null;
+			groupContext.targetNodeId = null;
+		}
+		// If it wasn't a drag, leave the state alone so clicks can work normally
+	};
 </script>
 
 <svelte:window onkeydown={groupContext.handleWindowKeydown} />
 
 <div class="l-stack">
-	<p class="u-text-align:center u-font-weight:bold">Add links to place the websites in the order H,I,J,K and L</p>
+	<p class="u-text-align:center u-font-weight:bold">
+		Add links to place the websites in the order H,I,J,K and L
+	</p>
 
 	<PageRankScores
 		nodes={groupContext.enhancedNodes.sort((a, b) => b.score - a.score).slice(0, 5)}
@@ -87,6 +120,9 @@
 		onNodeClick={handleNetworkNodeClick}
 		onNodeMouseEnter={handleNodeMouseEnter}
 		onNodeMouseLeave={handleNodeMouseLeave}
+		onNodeDragStart={handleNodeDragStart}
+		onNodeDrag={handleNodeDrag}
+		onNodeDragEnd={handleNodeDragEnd}
 	/>
 
 	<div class="l-cluster" style="--cluster-justify-content: space-between;">

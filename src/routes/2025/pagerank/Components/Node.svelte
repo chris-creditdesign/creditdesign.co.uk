@@ -8,6 +8,9 @@
 		onClick?: (id: number) => void;
 		onMouseEnter?: (id: number) => void;
 		onMouseLeave?: () => void;
+		onDragStart?: (id: number, x: number, y: number) => void;
+		onDrag?: (x: number, y: number) => boolean;
+		onDragEnd?: (targetId: number | null) => void;
 		classValue?: ClassValue;
 	}
 
@@ -18,15 +21,116 @@
 		onClick,
 		onMouseEnter,
 		onMouseLeave,
+		onDragStart,
+		onDrag,
+		onDragEnd,
 		classValue
 	}: Props = $props();
+
+	let isDragActive = $state(false);
+	let dragStartPos = $state({ x: 0, y: 0 });
+
+	const handlePointerDown = (event: PointerEvent) => {
+		event.preventDefault();
+		
+		// Start potential drag
+		const x = event.clientX;
+		const y = event.clientY;
+		
+		dragStartPos = { x, y };
+		onDragStart && onDragStart(id, x, y);
+		
+		// Capture pointer to track movement outside element
+		(event.target as HTMLElement).setPointerCapture(event.pointerId);
+		isDragActive = true;
+		wasDragOperation = false; // Reset drag flag
+	};
+
+	const handlePointerMove = (event: PointerEvent) => {
+		if (!isDragActive) return;
+		
+		event.preventDefault();
+		const x = event.clientX;
+		const y = event.clientY;
+		
+		// Update drag state and check if threshold exceeded
+		const isDragging = onDrag && onDrag(x, y);
+		
+		// If we're dragging, check what's under the cursor for target detection
+		if (isDragging) {
+			const elementUnder = document.elementFromPoint(x, y);
+			const nodeButton = elementUnder?.closest('button[data-node-id]');
+			const targetId = nodeButton ? parseInt(nodeButton.getAttribute('data-node-id') || '', 10) : null;
+			
+			// Update mouse enter/leave for target highlighting during drag
+			if (targetId && targetId !== id && onMouseEnter) {
+				onMouseEnter(targetId);
+			} else if (!targetId && onMouseLeave) {
+				onMouseLeave();
+			}
+		}
+	};
+
+	const handlePointerUp = (event: PointerEvent) => {
+		if (!isDragActive) return;
+		
+		event.preventDefault();
+		
+		// Check if we actually dragged (moved beyond threshold)
+		const deltaX = event.clientX - dragStartPos.x;
+		const deltaY = event.clientY - dragStartPos.y;
+		const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+		const actuallyDragged = distance > 8; // Use same threshold as context
+		
+		isDragActive = false;
+		
+		// Only handle as drag if we actually moved beyond threshold
+		if (actuallyDragged) {
+			// Find the target node under the cursor
+			const x = event.clientX;
+			const y = event.clientY;
+			const elementUnder = document.elementFromPoint(x, y);
+			const nodeButton = elementUnder?.closest('button[data-node-id]');
+			const targetId = nodeButton ? parseInt(nodeButton.getAttribute('data-node-id') || '', 10) : null;
+			
+			// End drag with target information
+			onDragEnd && onDragEnd(targetId);
+			
+			// Set flag to prevent click event
+			wasDragOperation = true;
+		} else {
+			// This was just a click, not a drag - don't call onDragEnd
+			// Let the click handler deal with it
+			wasDragOperation = false;
+		}
+		
+		// Release pointer capture
+		(event.target as HTMLElement).releasePointerCapture(event.pointerId);
+	};
+
+	// Track if this was a drag operation to prevent click after drag
+	let wasDragOperation = $state(false);
+
+	const handleClick = (event: MouseEvent) => {
+		// Only trigger click if it wasn't a drag operation
+		if (!wasDragOperation) {
+			onClick && onClick(id);
+		}
+		// Reset the flag after handling click
+		wasDragOperation = false;
+	};
 </script>
 
 <button
 	class={[isActive && 'active', classValue]}
-	onclick={() => onClick && onClick(id)}
+	data-node-id={id}
+	onclick={handleClick}
 	onmouseenter={() => onMouseEnter && onMouseEnter(id)}
 	onmouseleave={() => onMouseLeave && onMouseLeave()}
+	onpointerdown={handlePointerDown}
+	onpointermove={handlePointerMove}
+	onpointerup={handlePointerUp}
+	style="touch-action: none;"
 >
 	{name}
 </button>
