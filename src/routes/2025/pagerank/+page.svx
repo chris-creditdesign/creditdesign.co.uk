@@ -18,7 +18,7 @@ These algorithms decide what you see and perhaps more importantly, who sees you.
 
 ## How do these algorithms work?
 
-Put yourself in Google's shoes for a moment... lets say someone searches for the word 'frog'. We can check the entire internet and find every website that contains the word 'frog' but that would probably be hundreds of thousands of websites. How do we narrow down the selection?
+Imagine we are Google and someone searches for the word 'frog'. We can check the entire internet and find every website that contains the word 'frog', but that would probably be hundreds of thousands of websites. How do we narrow down the selection?
 
 Perhaps we could pick only websites that have the word 'frog' in the title? Or only websites that contain big pictures of frogs?
 
@@ -30,7 +30,7 @@ Essentially, each link is treated as a 'vote'. The site with the most votes wins
 
 ## _The Traitors_
 
-To get a better understanding, let's imagine a modified game of _The Traitors_. In this game the players cannot lie and we're only interested in determining who is mathematically most likely to be the traitor based on the accusations.
+To get a better understanding, let's imagine a simplified game of _The Traitors_. In this game the players cannot lie and we're only interested in determining who is mathematically most likely to be the traitor based on the accusations.
 
 There are only four players and they are each represented by pink circles. Let's say, imaginatively, that their names are A, B, C and D.
 

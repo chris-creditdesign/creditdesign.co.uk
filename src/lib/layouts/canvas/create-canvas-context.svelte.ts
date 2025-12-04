@@ -1,5 +1,6 @@
 import { setContext, getContext } from "svelte";
-import type { DrawFunction } from "$lib/types";
+
+type DrawFunction = (context: CanvasRenderingContext2D) => void;
 
 class CanvasContext {
 	linkDrawFunctions: DrawFunction[] = $state([]);

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Tween } from 'svelte/motion';
 	import { getGroupContext } from '../create-context.svelte';
-	import Circle from '$lib/layouts/canvas/Circle.svelte';
+	import Surfer from '$lib/layouts/canvas/Surfer.svelte';
 
 	type Props = {
 		key: string;
@@ -26,12 +26,12 @@
 </script>
 
 {#if groupContext.randomSurfer.visible}
-	<Circle
+	<Surfer
 		{key}
 		r={groupContext.radius * 0.6}
 		cx={tweenedCx.current}
 		cy={tweenedCy.current}
-		fill="#FF0000"
+		fill="#000000"
 		opacity={1}
 	/>
 {/if}
