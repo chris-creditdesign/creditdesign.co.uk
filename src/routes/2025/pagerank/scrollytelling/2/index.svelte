@@ -47,7 +47,7 @@
 				{
 					type: 'text',
 					value:
-						"Let's try that out. Our Random Surfer, represented by the ugly red circle, starts their random journey through the internet by picking a website to start with. How do they pick that website, you guessed it, randomly"
+						"Let's try that out. Our Random Surfer, represented by the icon, starts their random journey through the internet by picking a website to start with. How do they pick that website, you guessed it, randomly"
 				}
 			]
 		},

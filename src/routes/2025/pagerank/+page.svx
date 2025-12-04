@@ -142,6 +142,8 @@ There's just one problem, none of the websites link to each other. By default, t
 
 Can you play god and create links between the websites so that the pages are top 5 ranked H, I, J, K, L in that order?
 
+You can click and drag between the sites to create a new link, or click on one website and then another to add a link between them. If a link already exists, you can remove the link in the same way.
+
 <div style="--flow-space: var(--s2);">
 	<Game_3 />
 </div>
@@ -153,6 +155,10 @@ This is obviously a simplified version of the PageRank algorithm and PageRank is
 However, having an idea of how this works behind the scenes can help us look more sceptically at the suggestions offered to us by search engines, social media apps and AI chatbots.
 
 If we search for an expert on a topic, a candidate for a job opening, or a hot take on a breaking news story are we seeing a real mix of people with diverse backgrounds and opinions or are the same old popular accounts popping up over and over again?
+
+## Acknowledgements
+
+This article was developed from work and discussions at the [Visualizing Complexity Science Workshop 2025](https://vis.csh.ac.at/vis-workshop-2025/) at the Complexity Science Hub in Vienna with Antonio Solano, Chao Ruan, Laura Lotteraner, Paula Nauta, and Shehryar (Shay) Saharan. Many thanks!
 
 </div>
 

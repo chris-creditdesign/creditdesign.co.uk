@@ -133,7 +133,7 @@
 		}
 
 		.step {
-			min-height: 25vh;
+			min-height: 50vh;
 			margin: 0;
 		}
 
