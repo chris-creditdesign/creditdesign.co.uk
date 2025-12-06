@@ -7,7 +7,7 @@
 	</div>
 	<div class="l-sidebar__main-content">
 		<div class="l-stack" style="--stack-space--component: var(--s-1);">
-			<h2>Hi, I'm Chris Ryan</h2>
+			<h2>Hi, I’m Chris Ryan</h2>
 
 			<p>
 				I'm a Senior Art Editor at
