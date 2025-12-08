@@ -23,7 +23,7 @@
 <header>
 	<div class="l-stack" style="--stack-space--component: {cardHeaderStackSpace};">
 		{#if eyebrow}
-			<p class="eyebrow font-size:small font-family:sans-serif">
+			<p class="b-eyebrow">
 				{@html eyebrow}
 			</p>
 		{/if}
@@ -46,7 +46,7 @@
 		</CardHeadline>
 
 		{#if subHead}
-			<p class="font-size:small font-family:sans-serif">
+			<p class="b-subhead">
 				{@html subHead}
 			</p>
 		{/if}
@@ -56,5 +56,9 @@
 <style>
 	a {
 		text-decoration: none;
+	}
+
+	.b-eyebrow, .b-subhead {
+		font-size: 0.8rem;
 	}
 </style>

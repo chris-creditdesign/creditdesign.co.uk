@@ -67,7 +67,7 @@
 		{/if}
 
 		{#if footnote}
-			<p class="footnote font-size:small font-family:sans-serif">
+			<p class="b-footnote">
 				{@html footnote}
 			</p>
 		{/if}
@@ -75,3 +75,9 @@
 		<slot />
 	</div>
 </div>
+
+<style>
+	.b-footnote {
+		font-size: 0.8rem;
+	}
+</style>

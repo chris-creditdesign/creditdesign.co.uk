@@ -16,7 +16,7 @@
 	let useId = id.length && href !== undefined ? id : null;
 	let tabindex = id.length && href !== undefined ? '-1' : null;
 
-	let className = `font-size:${headlineFontSize} font-weight:bold`;
+	let className = `u-font-size:${headlineFontSize} u-font-weight:bold`;
 
 	let tag = headerLevel === 'none' ? 'span' : headerLevel;
 </script>

@@ -35,3 +35,79 @@
   --line-height-tighter: 1.2;
   --font-family: var(--font-family-sans-serif);
 }
+
+/* --------------------------------- Themes --------------------------------- */
+
+/* --------------------------------- Themes --------------------------------- */
+
+[data-theme] {
+  --color-component: initial;
+  --color-global: var(--color-text);
+  --color-disabled--component: initial;
+  --color-disabled--global: var(--color-text-disabled);
+  --color-link--component: initial;
+  --color-link--global: var(--color-link);
+  --color-link-active--component: initial;
+  --color-link-active--global: var(--color-link-active);
+  --color-background--component: initial;
+  --color-background--global: var(--color-background);
+
+  color: var(--color-component, var(--color-global));
+  background: var(--color-background--component,
+      var(--color-background--global));
+  fill: var(--color-component, var(--color-global));
+}
+
+[data-theme] a {
+  color: var(--color-link--component, var(--color-link--global));
+  fill: var(--color-link--component, var(--color-link--global));
+}
+
+[data-theme] a:visited {
+  color: var(--color-link--component, var(--color-link--global));
+  fill: var(--color-link--component, var(--color-link--global));
+}
+
+[data-theme] a:hover,
+[data-theme] a:focus {
+  color: var(--color-link-active--component,
+      var(--color-link-active--global));
+  fill: var(--color-link-active--component, var(--color-link-active--global));
+}
+
+[data-theme] a:hover:visited,
+[data-theme] a:focus:visited {
+  color: var(--color-link-active--component,
+      var(--color-link-active--global));
+  fill: var(--color-link-active--component, var(--color-link-active--global));
+}
+
+[data-theme] button {
+  color: var(--color-component, var(--color-global));
+  border-color: var(--color-component, var(--color-global));
+}
+
+[data-theme]:disabled {
+  color: var(--color-disabled--component, var(--color-disabled--global));
+  border-color: var(--color-disabled--component, var(--color-disabled--global));
+}
+
+[data-theme] button:hover,
+[data-theme] button:focus {
+  border-color: var(--color-link-active--component,
+      var(--color-link-active--global));
+}
+
+/* Invert */
+[data-theme="invert"] {
+  /* Text */
+  --color-text: var(--color-white-0);
+
+  /* Link */
+  --color-link: var(--color-orange-1);
+
+  --color-link-active: var(--color-black-0);
+
+  /* Background */
+  --color-background: var(--color-black-0);
+}

@@ -1,4 +1,4 @@
-<div class="l-sidebar" style="--sidebar-space--component: var(--s-1); --sidebar-content-min-width--component: 50%;">
+<div class="l-sidebar b-website-intro" style="--sidebar-space--component: var(--s-1); --sidebar-content-min-width--component: 50%;">
 	<div class="l-sidebar__content">
 		<img
 			src="img/chris-ryan-guardian.jpg"
@@ -25,7 +25,7 @@
 
 			<p>
 				You can find me on
-				<a href="https://bsky.app/profile/creditdesign.bsky.social">Bluesky</a>,
+				<a href="https://www.linkedin.com/in/chris-ryan-79595373/">LinkedIn</a>,
 				<a href="https://github.com/chris-creditdesign">GitHub</a>,
 				<a href="https://codepen.io/chris-creditdesign">Codepen</a>
 				and <a href="https://observablehq.com/@chris-creditdesign">Observable</a>.
@@ -35,6 +35,10 @@
 </div>
 
 <style>
+	.b-website-intro {
+		margin-block-start: var(--s2);
+	}
+
 	img {
 		border-radius: 50%;
 		max-width: 160px;
