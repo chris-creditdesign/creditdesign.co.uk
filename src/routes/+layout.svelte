@@ -4,7 +4,7 @@
 </script>
 
 <header class="l-cluster u-box" style="--box-padding: var(--s1);" data-theme="invert">
-	<a href="/"> CreditDesign </a>
+	<a href="/">CreditDesign</a>
 </header>
 
 <slot />
